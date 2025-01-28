@@ -2,7 +2,6 @@ package com.gjerek.portfolio.SkillsDomain.dataLayer;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 @Table(name = "skills")
@@ -15,7 +14,5 @@ public class Skill {
 
     @Column(name = "skill_type")
     private String skillType;
-
-
 
 }

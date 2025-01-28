@@ -1,12 +1,16 @@
 import React from 'react';
-import './App.css';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Navbar from './Components/layout/NavBar';
+import Home from './pages/Home';
+import  "./App.css"
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <h1>Hello</h1>
-    </div>
+    <Router> {/* Wrap the entire app with Router */}
+      <Navbar /> {/* Your Navbar will now work */}
+      <Home />
+    </Router>
   );
-}
+};
 
 export default App;

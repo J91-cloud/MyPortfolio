@@ -5,7 +5,7 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://localhost:5432/portfolio
+    url: jdbc:postgresql://host.docker.internal:5432/portfolio
     username: postgres
     password: pass
     driverClassName: org.postgresql.Driver

@@ -1,0 +1,26 @@
+
+.card {
+  background-color: var(--color-secondary);
+  padding: 24px;
+  border-radius: 8px;
+  transition: var(--transition-default);
+}
+
+.card:hover {
+  background-color: rgba(42, 44, 51, 0.8);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.cardDescription {
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+}
+
+.projectCount {
+  color: var(--color-primary);
+}

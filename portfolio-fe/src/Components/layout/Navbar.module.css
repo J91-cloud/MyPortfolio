@@ -1,0 +1,56 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(30, 31, 37, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+}
+
+.navContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 24px;
+}
+
+.logo {
+  font-family: var(--font-secondary);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.navLinks {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.navLink {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: var(--transition-default);
+}
+
+.navLink:hover,
+.navLink.active {
+  color: var(--color-text);
+}
+
+.hireButton {
+  background-color: var(--color-primary);
+  color: var(--color-text);
+  padding: 12px 24px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.hireButton:hover {
+  background-color: #FF5252;
+}
