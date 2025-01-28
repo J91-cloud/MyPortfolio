@@ -1,0 +1,17 @@
+/* src/pages/About.module.css */
+.aboutContainer {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .aboutContainer h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .aboutContainer p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+  }
+  
