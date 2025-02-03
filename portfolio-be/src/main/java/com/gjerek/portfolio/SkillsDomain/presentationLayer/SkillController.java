@@ -5,10 +5,9 @@ import com.gjerek.portfolio.SkillsDomain.dataLayer.Skill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/skills")
@@ -21,11 +20,21 @@ public class SkillController {
         this.skillService = skillService;
     }
 
+//    @GetMapping
+//    public ResponseEntity<List<SkillResponseDTO>> getSkills() {
+//
+//
+//        return skillService.getAllSkills();
+//    }
+
 
     @PostMapping()
-    public ResponseEntity<Skill> addSkill(@RequestBody SkillRequestDTO skillRequestDTO) {
+    public ResponseEntity<SkillResponseDTO> addSkill(@RequestBody SkillRequestDTO skillRequestDTO) {
         Skill newSkill = skillService.addSkill(skillRequestDTO);
-        return new ResponseEntity<>(newSkill, HttpStatus.CREATED);
+        SkillResponseDTO responseDTO = new SkillResponseDTO();
+        responseDTO.setId(newSkill.getId());
+        responseDTO.setSkillType(newSkill.getSkillType());
+        return new ResponseEntity<>(responseDTO, HttpStatus.CREATED);
     }
 
 }

@@ -10,4 +10,9 @@ public class PortfolioBeApplication {
 		SpringApplication.run(PortfolioBeApplication.class, args);
 	}
 
+
+	/*
+	This can be the class where you will have your data loader service for testing.
+	 */
+
 }

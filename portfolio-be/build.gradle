@@ -30,7 +30,7 @@ dependencies {
 
 	// PostgreSQL database driver
 	implementation 'org.postgresql:postgresql'
-	implementation('org.springframework:spring-webmvc:5.0.1.RELEASE')
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 
 
 	// Spring Data JPA for database interaction

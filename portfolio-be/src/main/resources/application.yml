@@ -10,3 +10,11 @@ spring:
     password: pass
     driverClassName: org.postgresql.Driver
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    mappings:
+      enabled: true
