@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class SkillResponseDTO {
-    private Long id;
+
+    private String skillId;
     private String skillType;
 }
