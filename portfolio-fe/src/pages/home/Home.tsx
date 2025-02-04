@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import styles from './Home.module.css';
-import ServiceCard from './ServiceCard';
-import Login from './auth/Login';
+import ServiceCard from '../ServiceCard';
+import Login from '../auth/Login';
+import DisplaySkills from '../../Components/skills/DisplaySkills'
 
 const Home = () => {
   return (
@@ -35,6 +36,17 @@ const Home = () => {
 
       <Login/>
 
+      <br />
+
+      <h2 className={styles.header2}>My Skills</h2>
+
+      <hr />
+
+      <DisplaySkills/>
+
+      <hr />
+
+      <br />
 
 
       <div className={styles.services}>

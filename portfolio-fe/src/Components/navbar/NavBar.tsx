@@ -15,7 +15,7 @@ const Navbar = () => {
             to="/about"
             className={`${styles.navLink} ${location.pathname === '/about' ? styles.active : ''}`}
           >
-            About us
+            About Me
           </Link>
           <Link
             to="/portfolio"
