@@ -2,7 +2,6 @@ import { createAuth0Client, Auth0Client } from "@auth0/auth0-spa-js";
 import axios from "axios";
 
 export class AuthService {
-
   private auth0Client: Auth0Client | null = null;
 
   constructor() {

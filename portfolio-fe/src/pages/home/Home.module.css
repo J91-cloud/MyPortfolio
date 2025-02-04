@@ -66,3 +66,7 @@
   font-weight: 500;
   font-style: italic;
 }
+.skills {
+  display: flex;
+  display: inline;
+}

@@ -1,6 +1,6 @@
 // src/pages/About.tsx
-import React from 'react';
-import styles from './About.module.css'; // Create an About.module.css for styling
+import React from "react";
+import styles from "./About.module.css"; // Create an About.module.css for styling
 
 const About = () => {
   return (

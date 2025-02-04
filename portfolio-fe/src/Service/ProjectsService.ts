@@ -1,3 +1,1 @@
-export class ProjectsService {
-
-}
+export class ProjectsService {}

@@ -1,3 +1,3 @@
 export default interface skillRequestDTO {
-    skillType: String
-  }
+  skillType: String;
+}

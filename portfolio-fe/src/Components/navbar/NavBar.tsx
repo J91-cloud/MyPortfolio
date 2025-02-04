@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom';
-import styles from './Navbar.module.css';
+import { Link, useLocation } from "react-router-dom";
+import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const location = useLocation();
@@ -13,25 +13,23 @@ const Navbar = () => {
         <div className={styles.navLinks}>
           <Link
             to="/about"
-            className={`${styles.navLink} ${location.pathname === '/about' ? styles.active : ''}`}
+            className={`${styles.navLink} ${location.pathname === "/about" ? styles.active : ""}`}
           >
             About Me
           </Link>
           <Link
             to="/portfolio"
-            className={`${styles.navLink} ${location.pathname === '/portfolio' ? styles.active : ''}`}
+            className={`${styles.navLink} ${location.pathname === "/portfolio" ? styles.active : ""}`}
           >
-            Portfolio
+            My Projects
           </Link>
           <Link
             to="/contact"
-            className={`${styles.navLink} ${location.pathname === '/contact' ? styles.active : ''}`}
+            className={`${styles.navLink} ${location.pathname === "/contact" ? styles.active : ""}`}
           >
             Contact
           </Link>
-          <button className={styles.hireButton}>
-            Hire me
-          </button>
+          <button className={styles.hireButton}>Hire me</button>
         </div>
       </div>
     </nav>

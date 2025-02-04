@@ -1,4 +1,4 @@
-import styles from './ServiceCard.module.css';
+import styles from "./ServiceCard.module.css";
 
 interface ServiceCardProps {
   title: string;
@@ -6,7 +6,11 @@ interface ServiceCardProps {
   description: string;
 }
 
-const ServiceCard = ({ title, projectCount, description }: ServiceCardProps) => {
+const ServiceCard = ({
+  title,
+  projectCount,
+  description,
+}: ServiceCardProps) => {
   return (
     <div className={styles.card}>
       <h3 className={styles.cardTitle}>{title}</h3>
