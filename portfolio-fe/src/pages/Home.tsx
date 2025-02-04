@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import styles from './Home.module.css';
 import ServiceCard from './ServiceCard';
+import Login from './auth/Login';
 
 const Home = () => {
   return (
@@ -31,6 +32,10 @@ const Home = () => {
         </div>
         <div className={styles.heroImage} />
       </div>
+
+      <Login/>
+
+
 
       <div className={styles.services}>
         <ServiceCard

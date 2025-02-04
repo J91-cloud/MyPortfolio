@@ -39,6 +39,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	// Spring Boot Test dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+
+
+	// Spring Security for authentication and authorization
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	// OAuth2 Resource Server (needed for JWT authentication)
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
+
 }
 
 tasks.named('test') {
