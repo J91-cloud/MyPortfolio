@@ -24,7 +24,7 @@ public class Skill {
 
 
 
-    @Column(name = "skill_type")
+    @Column(name = "skill_type", nullable = false)
     private String skillType;
 
 }

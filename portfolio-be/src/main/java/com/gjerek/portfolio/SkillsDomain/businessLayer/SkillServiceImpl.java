@@ -4,8 +4,11 @@ import com.gjerek.portfolio.SkillsDomain.dataLayer.Skill;
 import com.gjerek.portfolio.SkillsDomain.dataLayer.SkillRepository;
 import com.gjerek.portfolio.SkillsDomain.presentationLayer.SkillRequestDTO;
 import com.gjerek.portfolio.SkillsDomain.presentationLayer.SkillResponseDTO;
+import com.gjerek.portfolio.utils.identifiers.SkillIdentifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.UUID;
 
 
 @Service
@@ -19,9 +22,17 @@ public class SkillServiceImpl implements SkillService{
         return null;
     }
 
+    @Override
     public Skill addSkill(SkillRequestDTO skillRequestDTO) {
-        Skill skill = new Skill();
-        skill.setSkillType(skillRequestDTO.getSkillType());
+        Skill skill = toSkillEntity(skillRequestDTO);
         return skillRepository.save(skill);
+    }
+
+    // Converts SkillRequestDTO into Skill Entity
+    private Skill toSkillEntity(SkillRequestDTO skillRequestDTO) {
+        return Skill.builder()
+                .skillIdentifier(new SkillIdentifier(UUID.randomUUID().toString()))
+                .skillType(skillRequestDTO.getSkillType())
+                .build();
     }
 }
