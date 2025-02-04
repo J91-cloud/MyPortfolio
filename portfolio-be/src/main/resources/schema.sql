@@ -1,5 +1,0 @@
--- -- Create the skills table
--- CREATE TABLE IF NOT EXISTS skills (
---                                       id SERIAL PRIMARY KEY, ,   -- Auto-incremented ID
---                                       skillType VARCHAR(255) NOT NULL -- Skill type as a string, non-nullable
---     );
