@@ -1,23 +1,17 @@
 // src/pages/Portfolio.tsx
-import React from 'react';
-import styles from './Projects.module.css'; // Create a Portfolio.module.css for styling
+import React from "react";
+import "../../styles/global.css";
 
 const Projects = () => {
   return (
-    <div className={styles.portfolioContainer}>
-      <h1>My Portfolio</h1>
-      <div className={styles.projects}>
-        <div className={styles.projectCard}>
-          <h3>Project 1</h3>
-          <p>Description of project 1.</p>
-          <p>Link to github</p>
+    <div className="container">
+      <div className="grid grid-cols-2">
+        <div>
+          <h1 className="font40 text-powderblue font-extrabold">Hello</h1>
         </div>
-        <div className={styles.projectCard}>
-          <h3>Project 2</h3>
-          <p>Description of project 2.</p>
-          <p>Link to github: </p>
+        <div>
+          <h1 className="font40 text-powderblue font-extrabold">Hello</h1>
         </div>
-        {/* Add more project cards as needed */}
       </div>
     </div>
   );

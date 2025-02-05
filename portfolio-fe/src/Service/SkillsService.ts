@@ -1,3 +1,1 @@
-export class SkillsService {
-
-}
+export class SkillsService {}

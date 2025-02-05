@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/api/v1/skills")
@@ -19,12 +21,10 @@ public class SkillController {
         this.skillService = skillService;
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<SkillResponseDTO>> getSkills() {
-//
-//
-//        return skillService.getAllSkills();
-//    }
+    @GetMapping
+    public ResponseEntity<List<Skill>> getSkills() {
+        return new ResponseEntity<>(skillService.getAllSkills(), HttpStatus.OK);
+    }
 
 
     @PostMapping

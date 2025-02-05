@@ -1,16 +1,14 @@
-// src/pages/Contact.tsx
-import React, { useState } from 'react';
-import styles from './Contact.module.css'; // Create a Contact.module.css for styling
+import React, { useState } from "react";
+import styles from "./Contact.module.css";
 
 const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // You can handle form submission here (send data to an API, etc.)
-    alert('Message sent!');
+    alert("Message sent!");
   };
 
   return (

@@ -8,6 +8,7 @@ import com.gjerek.portfolio.utils.identifiers.SkillIdentifier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 
@@ -18,8 +19,8 @@ public class SkillServiceImpl implements SkillService{
     private SkillRepository skillRepository;
 
     @Override
-    public Skill getAllSkills() {
-        return null;
+    public List<Skill> getAllSkills() {
+        return (List<Skill>) skillRepository.findAll();
     }
 
     @Override

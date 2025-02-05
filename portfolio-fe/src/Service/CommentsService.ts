@@ -1,3 +1,1 @@
-export class CommentsService {
-    
-}
+export class CommentsService {}
