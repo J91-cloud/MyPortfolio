@@ -1,5 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
+import Login from "../../pages/auth/Login";
 
 const Navbar = () => {
   const location = useLocation();
@@ -29,7 +30,7 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <button className={styles.hireButton}>Hire me</button>
+          <button className={styles.hireButton}> <Login /></button>
         </div>
       </div>
     </nav>

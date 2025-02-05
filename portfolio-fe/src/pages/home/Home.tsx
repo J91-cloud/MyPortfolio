@@ -1,11 +1,11 @@
 import { motion } from "framer-motion";
-import "../../styles/global.css";
-import { ArrowRight } from "lucide-react";
+
 import styles from "./Home.module.css";
 import ServiceCard from "../ServiceCard";
 import Login from "../auth/Login";
 import DisplaySkills from "../../Components/skills/DisplaySkills";
 import AddSkillPopup from "../skills/AddSkillPopup";
+import "../../styles/global.css";
 
 const Home = () => {
   let accessToken = localStorage.getItem("accessToken");
@@ -17,7 +17,7 @@ const Home = () => {
       exit={{ opacity: 0 }}
       className="container"
     >
-      <div className={styles.hero}>
+      {/* <div className={styles.hero}>
         <div className={styles.heroContent}>
           <h1 className={styles.title}>I'm Jessy Gjerek</h1>
           <h3 className={styles.subtitle}>
@@ -31,9 +31,18 @@ const Home = () => {
           </p>
         </div>
         <div className={styles.heroImage} />
-      </div>
+      </div> */}
 
-      <Login />
+      <div className="container">
+        <div className="grid grid-cols-2">
+          <div>
+          <h1 className="font40 font-extrabold">Hello</h1>
+          </div>
+          <div>
+          <h1>Hello</h1>
+          </div>
+        </div>
+      
 
       <br />
 
@@ -48,7 +57,9 @@ const Home = () => {
           </div>
         )}
 
-        <h2 className={styles.header2}>My Skills</h2>
+        <h2 className="font40 font-extrabold shadow-md text-powderblue mix-blend-exclusion ">
+          My Skills
+        </h2>
       </div>
 
       <hr />
@@ -57,17 +68,11 @@ const Home = () => {
 
       <hr />
 
-      <br />
+      
 
-      <br />
+      
 
-      <br />
-
-      <br />
-
-      <h1 className="text-4xl">SJKSK</h1>
-
-      <h1 className={styles.header2}>Recently Edited Projects</h1>
+      <h1 className="font30 mt-16 font-extrabold">Recently Edited Projects</h1>
 
       <div className={styles.services}>
         <ServiceCard
@@ -90,6 +95,7 @@ const Home = () => {
           projectCount="234+"
           description="Het is al geruime tijd een bekend gegeven"
         />
+      </div>
       </div>
     </motion.div>
   );

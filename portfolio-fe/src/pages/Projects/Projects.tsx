@@ -1,10 +1,19 @@
 // src/pages/Portfolio.tsx
 import React from "react";
-import styles from "./Projects.module.css"; // Create a Portfolio.module.css for styling
+import "../../styles/global.css";
 
 const Projects = () => {
   return (
-    <h1>Hello</h1>
+    <div className="container">
+      <div className="grid grid-cols-2">
+        <div>
+          <h1 className="font40 text-powderblue font-extrabold">Hello</h1>
+        </div>
+        <div>
+          <h1 className="font40 text-powderblue font-extrabold">Hello</h1>
+        </div>
+      </div>
+    </div>
   );
 };
 
