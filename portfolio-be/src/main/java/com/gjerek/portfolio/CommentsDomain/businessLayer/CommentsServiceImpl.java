@@ -43,13 +43,9 @@ public class CommentsServiceImpl implements CommentsService {
         Comment comment = commentRepository.findCommentByCommentIdentifier_CommentId(commentId);
 
         if (comment != null) {
-            // Change the status to PUBLISHED
             comment.setStatus(Status.PUBLISHED);
-
-            // Save the updated comment in the database
             commentRepository.save(comment);
         } else {
-            // Handle the case where the comment is not found
             System.out.println("Id not found");
         }
         return null;
