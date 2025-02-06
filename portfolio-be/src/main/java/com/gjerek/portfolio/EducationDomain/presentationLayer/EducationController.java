@@ -4,9 +4,7 @@ import com.gjerek.portfolio.EducationDomain.businessLayer.EducationService;
 import com.gjerek.portfolio.EducationDomain.dataLayer.Education;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +20,16 @@ public class EducationController {
     @GetMapping
     public ResponseEntity<List<Education>> getEducations() {
      return new ResponseEntity<>(educationService.getAllEducation(), HttpStatus.OK);
+    }
+    @PostMapping
+    public ResponseEntity<Education> addEducation(@RequestBody EducationRequestDTO educationRequestDTO) {
+        return new ResponseEntity<>(educationService.addEducation(educationRequestDTO), HttpStatus.CREATED);
+
+    }
+
+    @DeleteMapping("/{educationId}")
+    public ResponseEntity<Void> deleteEducation(@PathVariable String educationId) {
+        educationService.deleteEducation(educationId);
+        return ResponseEntity.noContent().build();
     }
 }
