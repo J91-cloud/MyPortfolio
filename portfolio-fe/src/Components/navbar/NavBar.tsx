@@ -30,7 +30,10 @@ const Navbar = () => {
           >
             Contact
           </Link>
-          <button className={styles.hireButton}> <Login /></button>
+          <button className={styles.hireButton}>
+            {" "}
+            <Login />
+          </button>
         </div>
       </div>
     </nav>

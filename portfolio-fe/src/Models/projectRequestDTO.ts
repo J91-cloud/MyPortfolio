@@ -1,3 +1,7 @@
 export default interface projectRequestDTO {
-  skillType: String;
+  description: String;
+  startDate: String;
+  endDate: String;
+  name: String;
+  githubLink: String;
 }
