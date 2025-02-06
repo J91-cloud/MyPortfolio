@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import axiosInstance from "../../assets/axiosIntanceAuth";
+import axiosInstance from "../../assets/axiosInstance";
 import skillRequestDTO from "../../Models/skillRequestDTO";
-// import "bootstrap/dist/css/bootstrap.min.css";
-import styles from "./DisplaySkills.module.css";
+import "../../styles/global.css"
+
 
 const SkillList: React.FC = () => {
   const [skills, setSkills] = useState<skillRequestDTO[]>([]);
@@ -35,11 +35,11 @@ const SkillList: React.FC = () => {
     <div>
       <div className="container">
         <div className="row">
-          <ul className={styles.skillList}>
+          <ul className="skillList font-bold">
             {skills.map((skill, index) => (
-              <li className={styles.list} key={index}>
+              <li className="list" key={index}>
                 {skill.skillType}
-              </li> // Using index as key since id is not included
+              </li> 
             ))}
           </ul>
         </div>

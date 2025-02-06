@@ -1,6 +1,7 @@
 // src/pages/Portfolio.tsx
 import React from "react";
 import "../../styles/global.css";
+import DisplayProjects from "../../Components/projects/DisplayProjects";
 
 const Projects = () => {
   return (
@@ -13,6 +14,7 @@ const Projects = () => {
           <h1 className="font40 text-powderblue font-extrabold">Hello</h1>
         </div>
       </div>
+      <DisplayProjects />
     </div>
   );
 };
