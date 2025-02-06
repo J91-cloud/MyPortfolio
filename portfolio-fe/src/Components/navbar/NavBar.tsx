@@ -4,6 +4,7 @@ import Login from "../../pages/auth/Login";
 
 const Navbar = () => {
   const location = useLocation();
+  let accessToken = localStorage.getItem("accessToken");
 
   return (
     <nav className={styles.navbar}>
@@ -12,6 +13,19 @@ const Navbar = () => {
           Jessy Gjerek
         </Link>
         <div className={styles.navLinks}>
+          {accessToken ? (
+            <Link
+              to="/commentDashboard"
+              className={`${styles.navLink} ${location.pathname === "/commentDashboard" ? styles.active : ""}`}
+            >
+              Pending Comments
+            </Link>
+          ) : (
+            <div>
+              <p></p>
+            </div>
+          )}
+
           <Link
             to="/about"
             className={`${styles.navLink} ${location.pathname === "/about" ? styles.active : ""}`}

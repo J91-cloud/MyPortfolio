@@ -3,6 +3,7 @@ import Navbar from "./Components/navbar/NavBar";
 import Home from "./pages/home/Home";
 import About from "./pages/about/About";
 import Portfolio from "./pages/projects/Projects";
+import AcceptComments from "./Components/comments/AcceptComments";
 import Contact from "./pages/contact/Contact";
 import "./App.css";
 
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/commentDashboard" element={<AcceptComments />} />
         </Routes>
       </Router>
     </>
