@@ -2,6 +2,7 @@ package com.gjerek.portfolio.utils.DataLoaders;
 
 import com.gjerek.portfolio.CommentsDomain.dataLayer.Comment;
 import com.gjerek.portfolio.CommentsDomain.dataLayer.CommentRepository;
+import com.gjerek.portfolio.CommentsDomain.dataLayer.Status;
 import com.gjerek.portfolio.utils.identifiers.CommentIdentifier;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class CommentsLoader {
                 .name("James Duhan")
                 .content("Great Profile Jessy. I recommend you try and complete more hackathons for your profile. You seem like your intersted in coding.")
                 .profession("Professor at Concordia")
+                .status(Status.PUBLISHED)
                 .build();
         commentRepository.save(comment1);
 
@@ -29,6 +31,7 @@ public class CommentsLoader {
                 .name("Doug Peterson")
                 .content("I had Jessy as a high school student and he was great, always showed up and paid attention to what we were teaching")
                 .profession("Professor at Saint-Lambert High School")
+                .status(Status.PUBLISHED)
                 .build();
         commentRepository.save(comment2);
 
@@ -37,6 +40,7 @@ public class CommentsLoader {
                 .name("George Stephan")
                 .content("Had a great time working with Jessy when we build our first web application together, very dedicated and always helped debug our problems")
                 .profession("Student and Friend of Jessy")
+                .status(Status.PUBLISHED)
                 .build();
         commentRepository.save(comment3);
 
