@@ -1,9 +1,11 @@
 package com.gjerek.portfolio;
 
 import com.gjerek.portfolio.CommentsDomain.dataLayer.CommentRepository;
+import com.gjerek.portfolio.EducationDomain.dataLayer.EducationRepository;
 import com.gjerek.portfolio.ProfileDomain.dataLayer.ProfileRepository;
 import com.gjerek.portfolio.SkillsDomain.dataLayer.SkillRepository;
 import com.gjerek.portfolio.utils.DataLoaders.CommentsLoader;
+import com.gjerek.portfolio.utils.DataLoaders.EducationsLoader;
 import com.gjerek.portfolio.utils.DataLoaders.ProfileLoader;
 import com.gjerek.portfolio.utils.DataLoaders.SkillsLoader;
 import org.springframework.boot.CommandLineRunner;
@@ -44,6 +46,14 @@ public class PortfolioBeApplication {
 		return args -> {
 			if (profileRepository.count() == 0) {
 				dataLoaderService.loadProfile();
+			}
+		};
+	}
+	@Bean
+	public CommandLineRunner runEducationLoader(EducationsLoader dataLoaderService, EducationRepository educationRepository) {
+		return args -> {
+			if (educationRepository.count() == 0) {
+				dataLoaderService.loadData();
 			}
 		};
 	}
