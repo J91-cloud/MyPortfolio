@@ -109,7 +109,7 @@ const DynamicForm = <T extends Record<string, any>>({
     <>
       {/* Add Button to Open Modal */}
       <button className="add-button" onClick={() => setIsModalOpen(true)}>
-        Add
+        Add New Entry
       </button>
 
       {/* Modal Overlay */}

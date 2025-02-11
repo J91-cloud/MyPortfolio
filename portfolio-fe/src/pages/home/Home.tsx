@@ -8,6 +8,7 @@ import skillRequestDTO from "../../Models/skillRequestDTO";
 import axiosInstanceAuth from "../../assets/axiosIntanceAuth";
 import axiosInstance from "../../assets/axiosInstance";
 import commentRequestDTO from "../../Models/commentRequestDTO";
+import UpdateProfile from "../../Components/profile/UpdateFrofile";
 
 const Home = () => {
   let accessToken = localStorage.getItem("accessToken");
@@ -45,6 +46,17 @@ const Home = () => {
     >
       <div className="container">
         <ShowProfile />
+
+        {accessToken ? (
+          
+             <UpdateProfile />
+              
+            ) : (
+              <div>
+                <p></p>
+              </div>
+            )}
+        
 
         <br />
 

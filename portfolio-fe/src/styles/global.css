@@ -1569,18 +1569,19 @@
 }
 
 .add-button {
-  background-color: #ff6b6b; /* --color-primary */
-  color: #ffffff; /* --color-text */
-  border: none;
+  color: #ff6b6b; /* --color-primary */
+  background-color:  #1e1f25; /* --color-text */
+  border: 1px solid #ff6b6b;
   padding: 10px 20px;
+  margin: 5px;
   border-radius: 5px;
   cursor: pointer;
-  font-family: "Inter", sans-serif; /* --font-primary */
+  font-family: 'Fira Code', monospace; /* --font-primary */
   transition: all 0.3s ease; /* --transition-default */
 }
 
 .add-button:hover {
-  background-color: #e65a5a; /* Darken --color-primary by 10% */
+  background-color:  #373943; /* Darken --color-primary by 10% */
 }
 
 .modal-overlay {

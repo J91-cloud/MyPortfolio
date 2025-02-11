@@ -19,7 +19,7 @@ const AcceptComments: React.FC = () => {
             profession: comment.profession,
             content: comment.content,
             status: comment.status,
-            commentId: comment.commentIdentifier.commentId
+            commentId: comment.commentIdentifier.commentId,
           }),
         );
         setComments(commentData);
@@ -43,12 +43,10 @@ const AcceptComments: React.FC = () => {
   const handleAcceptComment = async (commentId: String) => {
     try {
       const response = await axiosInstance.patch(`/comments/${commentId}`);
-  
     } catch (error) {
       console.error("Error:", error);
     }
   };
-  
 
   return (
     <div className="container">
@@ -61,7 +59,9 @@ const AcceptComments: React.FC = () => {
               className="bg-backS shadow-lg rounded-2xl p-6 border 
                 border-gray-200 transition-transform hover:scale-105 mt-10"
             >
-              <h1 className="text-lg text-white font-semibold">{comment.name}</h1>
+              <h1 className="text-lg text-white font-semibold">
+                {comment.name}
+              </h1>
               <p className="text-sm font-medium text-gray-300">
                 {comment.profession}
               </p>
@@ -69,7 +69,7 @@ const AcceptComments: React.FC = () => {
               <p className="text-gray-400 mt-10">{comment.content}</p>
               <p className="text-gray-400 mt-10">{comment.status}</p>
               <p>{comment.commentId}</p>
-  
+
               {/* Extract and Use commentId from commentIdentifier */}
               <button
                 onClick={() => handleAcceptComment(comment.commentId)}
@@ -82,7 +82,5 @@ const AcceptComments: React.FC = () => {
       </div>
     </div>
   );
-  
-  
 };
 export default AcceptComments;
