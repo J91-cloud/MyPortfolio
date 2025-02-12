@@ -1,9 +1,8 @@
-export default interface projectRequestDTO {
+export default interface projectRequestDTO_Id {
+  projectId: String;  
   description: String;
   startDate: String;
   endDate: String;
   name: String;
   githubLink: String;
 }
-
-
