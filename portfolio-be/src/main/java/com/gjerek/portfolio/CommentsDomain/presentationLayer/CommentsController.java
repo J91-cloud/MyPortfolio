@@ -36,4 +36,9 @@ public class CommentsController {
         commentsService.acceptCommentForReview(commentId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+    @DeleteMapping ("/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable String commentId) {
+        commentsService.deleteComment(commentId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }

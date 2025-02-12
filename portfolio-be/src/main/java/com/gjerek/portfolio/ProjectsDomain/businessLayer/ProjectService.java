@@ -13,5 +13,7 @@ public interface ProjectService {
 
     Project addProject(ProjectRequestDTO projectRequestDTO);
 
+    Project updateProject(String projectId,ProjectRequestDTO projectRequestDTO);
+
     void deleteProject(String projectId);
 }

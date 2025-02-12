@@ -51,5 +51,12 @@ public class CommentsServiceImpl implements CommentsService {
         return null;
     }
 
+    @Override
+    public Void deleteComment(String commentId) {
+        Comment comment = commentRepository.findCommentByCommentIdentifier_CommentId(commentId);
+        commentRepository.delete(comment);
+        return null;
+    }
+
 
 }

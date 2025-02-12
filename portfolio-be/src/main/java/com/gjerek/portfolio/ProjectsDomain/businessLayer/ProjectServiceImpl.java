@@ -40,6 +40,17 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
+    public Project updateProject(String projectId, ProjectRequestDTO projectRequestDTO) {
+        Project project = projectRepository.findProjectByProjectIdentifier_ProjectId(projectId);
+        project.setName(projectRequestDTO.getName());
+        project.setDescription(projectRequestDTO.getDescription());
+        project.setGithubLink(projectRequestDTO.getGithubLink());
+        project.setEndDate(projectRequestDTO.getEndDate());
+        project.setStartDate(projectRequestDTO.getStartDate());
+        return projectRepository.save(project);
+    }
+
+    @Override
     public void deleteProject(String projectId) {
         Project project = projectRepository.findProjectByProjectIdentifier_ProjectId(projectId);
         projectRepository.delete(project);

@@ -12,5 +12,6 @@ public interface CommentsService {
     Comment publishCommentForReview(CommentRequestDTO commentRequestDTO);
 
     Void acceptCommentForReview(String commentId);
+    Void deleteComment(String commentId);
 
 }

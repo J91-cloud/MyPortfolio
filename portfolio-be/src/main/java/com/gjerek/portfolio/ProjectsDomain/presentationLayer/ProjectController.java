@@ -33,6 +33,10 @@ public class ProjectController {
     ResponseEntity<Project> createProject(@RequestBody ProjectRequestDTO projectRequestDTO) {
         return new ResponseEntity<>(projectService.addProject(projectRequestDTO), HttpStatus.CREATED);
     }
+    @PutMapping("/{projectId}")
+    ResponseEntity<Project> updateProject(@PathVariable String projectId, @RequestBody ProjectRequestDTO projectRequestDTO) {
+        return new ResponseEntity<>(projectService.updateProject(projectId, projectRequestDTO), HttpStatus.OK);
+    }
 
     @DeleteMapping("/{projectId}")
     public ResponseEntity<Void> deleteProject(@PathVariable String projectId) {
