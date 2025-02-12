@@ -9,6 +9,8 @@ public interface ProjectService {
 
     List<Project> getAllProjects();
 
+    Project getProjectByProjectId(String projectId);
+
     Project addProject(ProjectRequestDTO projectRequestDTO);
 
     void deleteProject(String projectId);

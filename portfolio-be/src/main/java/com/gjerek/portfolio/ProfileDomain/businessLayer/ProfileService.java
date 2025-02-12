@@ -8,7 +8,8 @@ import java.util.List;
 
 public interface ProfileService {
     List<Profile> getProfile();
-    Profile updateProfile(String profileId,ProfileRequestDTO profileRequestDTO);
+    Profile getProfileByProfileId(Long id);
+    Profile updateProfile(Long id,ProfileRequestDTO profileRequestDTO);
 
 
 }

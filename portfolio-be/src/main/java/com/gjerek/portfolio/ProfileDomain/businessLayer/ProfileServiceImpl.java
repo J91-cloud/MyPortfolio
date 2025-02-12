@@ -19,10 +19,15 @@ public class ProfileServiceImpl implements ProfileService {
         return profileRepository.findAll();
     }
 
+    @Override
+    public Profile getProfileByProfileId(Long id) {
+        return profileRepository.findById(id).orElse(null);
+    }
+
 
     @Override
-    public Profile updateProfile(String profileId, ProfileRequestDTO profileRequestDTO) {
-        Profile profile = profileRepository.findProfileByProfileIdentifier_ProfileId(profileId);
+    public Profile updateProfile(Long id, ProfileRequestDTO profileRequestDTO) {
+        Profile profile = profileRepository.findById(id).orElse(null);
 
         profile.setName(profileRequestDTO.getName());
         profile.setAge(profileRequestDTO.getAge());

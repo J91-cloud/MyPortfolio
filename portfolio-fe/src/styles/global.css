@@ -50,6 +50,10 @@
   display: flow-root;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .font5 {
   font-size: 5px;
 }
@@ -104,7 +108,7 @@
 .flex-wrap {
   flex-wrap: wrap;
 }
-.flex-wrap-reverse {
+.flex-wrapFerse {
   flex-wrap: wrap-reverse;
 }
 .flex-nowrap {
@@ -273,6 +277,10 @@
   margin: auto;
 }
 
+.mr-16 {
+  margin-right: 4rem;
+}
+
 .mt-10 {
   margin-top: 2.5rem;
 }
@@ -380,8 +388,7 @@
 .font-black {
   font-weight: 900;
 }
-
-/* Colors */
+cur
 .text-transparent {
   color: transparent;
 }
@@ -923,8 +930,9 @@
 
 /* Transitions */
 .transition {
-  transition-property: background-color, border-color, color, fill, stroke,
-    opacity, box-shadow, transform;
+  transition-property:
+    background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1570,18 +1578,18 @@
 
 .add-button {
   color: #ff6b6b; /* --color-primary */
-  background-color:  #1e1f25; /* --color-text */
+  background-color: #1e1f25; /* --color-text */
   border: 1px solid #ff6b6b;
   padding: 10px 20px;
   margin: 5px;
   border-radius: 5px;
   cursor: pointer;
-  font-family: 'Fira Code', monospace; /* --font-primary */
+  font-family: "Fira Code", monospace; /* --font-primary */
   transition: all 0.3s ease; /* --transition-default */
 }
 
 .add-button:hover {
-  background-color:  #373943; /* Darken --color-primary by 10% */
+  background-color: #373943; /* Darken --color-primary by 10% */
 }
 
 .modal-overlay {

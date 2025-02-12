@@ -23,6 +23,11 @@ public class ProjectController {
 
 
     }
+    @GetMapping("/{projectId}")
+    ResponseEntity<Project> getProject(@PathVariable String projectId) {
+        return new ResponseEntity<>(projectService.getProjectByProjectId(projectId), HttpStatus.OK);
+
+    }
 
     @PostMapping
     ResponseEntity<Project> createProject(@RequestBody ProjectRequestDTO projectRequestDTO) {

@@ -50,6 +50,8 @@ const AcceptComments: React.FC = () => {
 
   return (
     <div className="container">
+      <h1 className="font30 font-bold">Comments to Review</h1>
+
       <div className="grid gap-4 mt-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-30">
         {comments
           .filter((comment) => comment.status === "REVIEW") // Show only REVIEW comments

@@ -48,15 +48,12 @@ const Home = () => {
         <ShowProfile />
 
         {accessToken ? (
-          
-             <UpdateProfile />
-              
-            ) : (
-              <div>
-                <p></p>
-              </div>
-            )}
-        
+          <UpdateProfile />
+        ) : (
+          <div>
+            <p></p>
+          </div>
+        )}
 
         <br />
 
@@ -88,6 +85,10 @@ const Home = () => {
 
       <hr />
 
+      <br />
+      <br />
+
+      <h1 className="font30 font-bold">Received Comments</h1>
       <DynamicForm<commentRequestDTO>
         endpoint="/comments"
         formType="comment"

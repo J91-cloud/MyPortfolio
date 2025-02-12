@@ -38,19 +38,19 @@ const DisplayComments: React.FC = () => {
   }
 
   return (
-    <div className="grid gap-4 mt-20 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mt-30">
+    <div className="flex ">
       {comments.map((comment, index) => (
         <div
           key={index}
-          className="bg-backS shadow-lg rounded-2xl p-6 border 
-      border-gray-200 transition-transform hover:scale-105 mt-10"
+          className="bg-backS shadow-lg rounded-2xl p-6 border border-gray-200 
+      transition-transform hover:scale-105"
         >
           <h1 className="text-lg text-white font-semibold">{comment.name}</h1>
           <p className="text-sm font-medium text-gray-300">
             {comment.profession}
           </p>
           <hr className="my-3 border-gray-300" />
-          <p className="text-gray-400 mt-10">{comment.content}</p>
+          <p className="text-gray-400 mt-4">{comment.content}</p>
         </div>
       ))}
     </div>

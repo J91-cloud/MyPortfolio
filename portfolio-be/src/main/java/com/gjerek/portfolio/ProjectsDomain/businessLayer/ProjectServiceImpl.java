@@ -12,12 +12,18 @@ import java.util.UUID;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
+
     @Autowired
     private ProjectRepository projectRepository;
 
     @Override
     public List<Project> getAllProjects() {
         return projectRepository.findAll();
+    }
+
+    @Override
+    public Project getProjectByProjectId(String projectId) {
+        return projectRepository.findProjectByProjectIdentifier_ProjectId(projectId);
     }
 
     @Override

@@ -10,9 +10,7 @@ public class ProfileIdentifier {
 
     private String profileId;
 
-    public ProfileIdentifier() {
-        this.profileId = UUID.randomUUID().toString();
-    }
+    public ProfileIdentifier() {this.profileId = UUID.randomUUID().toString();}
 
     public ProfileIdentifier(String profileId) {
         this.profileId = profileId;

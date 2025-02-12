@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import profileRequestDTO from "../../Models/profileRequestDTO";
 import axiosInstance from "../../assets/axiosInstance";
-import { Dialog, DialogTitle, DialogContent, DialogActions, TextField, Button } from "@mui/material"; // Or any other UI library
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Button,
+} from "@mui/material"; // Or any other UI library
 
 const UpdateProfile: React.FC = () => {
   const [profile, setProfile] = useState<profileRequestDTO | null>(null);
@@ -18,14 +25,13 @@ const UpdateProfile: React.FC = () => {
     email: "",
   });
 
-  // Fetch profile data
   useEffect(() => {
     axiosInstance
-      .get("/profile")
+      .get("/profile/1")
       .then((response) => {
         const profileData: profileRequestDTO = response.data;
         setProfile(profileData);
-        setFormData(profileData); 
+        setFormData(profileData);
         setLoading(false);
       })
       .catch((error) => {
@@ -44,14 +50,16 @@ const UpdateProfile: React.FC = () => {
     }));
   };
 
-  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.put("/profile/", formData);
+      const response = await axiosInstance.put(
+        "/profile/1",
+        formData,
+      );
       console.log("Profile updated:", response.data);
-      setProfile(response.data); 
-      setIsPopupOpen(false); 
+      setProfile(response.data);
+      setIsPopupOpen(false);
     } catch (error) {
       console.error("Error updating profile:", error);
       setError("Failed to update profile.");
@@ -68,7 +76,16 @@ const UpdateProfile: React.FC = () => {
 
   return (
     <>
-      <Button variant="contained" color="primary" onClick={() => setIsPopupOpen(true)}>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          if (profile) {
+            setFormData(profile); // Ensure form gets the latest profile data
+          }
+          setIsPopupOpen(true);
+        }}
+      >
         Update Profile
       </Button>
 
