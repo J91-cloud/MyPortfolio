@@ -1,0 +1,56 @@
+/* Timeline Container */
+.timeline-container {
+    perspective: 1000px; /* Adds depth to the 3D effect */
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #1e3c72, #2a5298);
+  }
+  
+  /* Timeline Wrapper */
+  .timeline-wrapper {
+    position: relative;
+    transform-style: preserve-3d; /* Ensures child elements are rendered in 3D space */
+    transform: rotateX(60deg) rotateZ(-45deg); /* Tilt the timeline for a futuristic look */
+  }
+  
+  /* Timeline Point */
+  .timeline-point {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: orange;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+  }
+  
+  .timeline-point:hover {
+    transform: translateZ(50px); /* Pop out on hover */
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.8); /* Add a glow effect */
+  }
+  
+  /* Project Details */
+  .project-details {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    display: none;
+  }
+  
+  .timeline-point:hover .project-details {
+    display: block; /* Show details on hover */
+  }

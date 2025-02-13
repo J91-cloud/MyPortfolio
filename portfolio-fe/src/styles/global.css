@@ -217,7 +217,9 @@
 .p-64 {
   padding: 16rem;
 }
-
+.ml{
+  margin-left: 0px;
+}
 /* Margin */
 .m-0 {
   margin: 0;
@@ -748,6 +750,9 @@ cur .text-transparent {
 }
 .w-64 {
   width: 16rem;
+}
+.w-84 {
+  width: 40rem;
 }
 .w-auto {
   width: auto;
