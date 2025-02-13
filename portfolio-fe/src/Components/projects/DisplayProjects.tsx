@@ -4,7 +4,6 @@ import axiosInstance from "../../assets/axiosInstance";
 import ServiceCard from "./project-display/ServiceCard";
 import UpdateProject from "./UpdateProject";
 
-
 interface projectRequestDTO {
   projectId: string; // ✅ Use lowercase "string"
   description: string;
@@ -18,6 +17,7 @@ const DisplayProjects: React.FC = () => {
   const [projects, setProjects] = useState<projectRequestDTO[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  let accessToken = localStorage.getItem("accessToken");
 
   useEffect(() => {
     axiosInstance
@@ -27,13 +27,14 @@ const DisplayProjects: React.FC = () => {
 
         const projectData: projectRequestDTO[] = response.data.map(
           (project: any) => ({
-            projectId: project.projectIdentifier?.projectId || project.projectId, // Ensure correct path
+            projectId:
+              project.projectIdentifier?.projectId || project.projectId, // Ensure correct path
             description: project.description,
             startDate: project.startDate,
             endDate: project.endDate,
             name: project.name,
             githubLink: project.githubLink,
-          })
+          }),
         );
 
         setProjects(projectData);
@@ -60,7 +61,14 @@ const DisplayProjects: React.FC = () => {
             githubLink={project.githubLink}
             startDate={project.startDate}
           />
-          <UpdateProject projectId={project.projectId} /> {/* ✅ Now it works */}
+
+          {accessToken ? (
+            <UpdateProject projectId={project.projectId} />
+          ) : (
+            <div>
+              <p></p>
+            </div>
+          )}
         </div>
       ))}
     </div>

@@ -388,8 +388,7 @@
 .font-black {
   font-weight: 900;
 }
-cur
-.text-transparent {
+cur .text-transparent {
   color: transparent;
 }
 .text-current {
@@ -754,7 +753,7 @@ cur
   width: auto;
 }
 .w-full {
-  width: 100%;
+  width: 40%;
 }
 .w-screen {
   width: 100vw;

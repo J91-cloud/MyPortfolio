@@ -53,10 +53,7 @@ const UpdateProfile: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axiosInstance.put(
-        "/profile/1",
-        formData,
-      );
+      const response = await axiosInstance.put("/profile/1", formData);
       console.log("Profile updated:", response.data);
       setProfile(response.data);
       setIsPopupOpen(false);

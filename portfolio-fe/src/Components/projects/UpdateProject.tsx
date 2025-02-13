@@ -11,13 +11,10 @@ import {
 } from "@mui/material";
 
 interface UpdateProjectProps {
-    projectId: string;
-  }
+  projectId: string;
+}
 
-  
-
-
-  const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
+const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
   const [project, setProject] = useState<projectRequestDTO | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -31,19 +28,19 @@ interface UpdateProjectProps {
   });
 
   useEffect(() => {
-      axiosInstance
-        .get(`/projects/${projectId}`)
-        .then((response) => {
-          const projectData: projectRequestDTO = response.data;
-          setProject(projectData);
-          setFormData(projectData);
-          setLoading(false);
-        })
-        .catch((error) => {
-          console.error("Error fetching project:", error);
-          setError("Failed to fetch project.");
-          setLoading(false);
-        });
+    axiosInstance
+      .get(`/projects/${projectId}`)
+      .then((response) => {
+        const projectData: projectRequestDTO = response.data;
+        setProject(projectData);
+        setFormData(projectData);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching project:", error);
+        setError("Failed to fetch project.");
+        setLoading(false);
+      });
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,7 +56,7 @@ interface UpdateProjectProps {
     try {
       const response = await axiosInstance.put(
         `/projects/${projectId}`,
-        formData
+        formData,
       );
       console.log("Project updated:", response.data);
       setProject(response.data);
@@ -80,12 +77,12 @@ interface UpdateProjectProps {
 
   return (
     <>
-    <Button
+      <Button
         variant="contained"
         color="primary"
         onClick={() => {
           if (project) {
-            setFormData(project); 
+            setFormData(project);
           }
           setIsPopupOpen(true);
         }}
@@ -93,60 +90,59 @@ interface UpdateProjectProps {
         Update Project
       </Button>
 
-
-    <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
-      <DialogTitle>Update Project</DialogTitle>
-      <DialogContent>
-        <form onSubmit={handleSubmit}>
-          <TextField
-            name="name"
-            label="Name"
-            value={formData.name}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            name="description"
-            label="Description"
-            value={formData.description}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            name="startDate"
-            label="Start Date"
-            value={formData.startDate}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            name="endDate"
-            label="End Date"
-            value={formData.endDate}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <TextField
-            name="githubLink"
-            label="GitHub Link"
-            value={formData.githubLink}
-            onChange={handleInputChange}
-            fullWidth
-            margin="normal"
-          />
-          <DialogActions>
-            <Button onClick={()=> setIsPopupOpen(false)}>Cancel</Button>
-            <Button type="submit" color="primary">
-              Save
-            </Button>
-          </DialogActions>
-        </form>
-      </DialogContent>
-    </Dialog>
+      <Dialog open={isPopupOpen} onClose={() => setIsPopupOpen(false)}>
+        <DialogTitle>Update Project</DialogTitle>
+        <DialogContent>
+          <form onSubmit={handleSubmit}>
+            <TextField
+              name="name"
+              label="Name"
+              value={formData.name}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="description"
+              label="Description"
+              value={formData.description}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="startDate"
+              label="Start Date"
+              value={formData.startDate}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="endDate"
+              label="End Date"
+              value={formData.endDate}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="githubLink"
+              label="GitHub Link"
+              value={formData.githubLink}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <DialogActions>
+              <Button onClick={() => setIsPopupOpen(false)}>Cancel</Button>
+              <Button type="submit" color="primary">
+                Save
+              </Button>
+            </DialogActions>
+          </form>
+        </DialogContent>
+      </Dialog>
     </>
   );
 };

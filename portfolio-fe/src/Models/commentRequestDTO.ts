@@ -1,6 +1,7 @@
 export default interface commentRequestDTO {
-  name: String;
-  content: String;
-  profession: String;
-  status: String;
+  commentId: string;
+  name: string;
+  content: string;
+  profession: string;
+  status: string;
 }

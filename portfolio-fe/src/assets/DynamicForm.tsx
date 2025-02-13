@@ -1,5 +1,4 @@
-// DynamicForm.tsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/global.css";
 
 type FormField = {
@@ -12,9 +11,9 @@ type FormField = {
 type FormConfig = {
   fields: FormField[];
   submitButtonText: string;
+  successMessage: string;
 };
 
-// Define form configurations for each request DTO
 const formConfigs: Record<string, FormConfig> = {
   comment: {
     fields: [
@@ -23,12 +22,15 @@ const formConfigs: Record<string, FormConfig> = {
       { name: "profession", type: "text", label: "Profession", required: true },
     ],
     submitButtonText: "Submit Comment",
+    successMessage:
+      "Your comment has been submitted successfully! And will be reviewed by the creator ✅",
   },
   skill: {
     fields: [
       { name: "skillType", type: "text", label: "Skill", required: true },
     ],
     submitButtonText: "Submit Skill",
+    successMessage: "Your skill has been added! 🚀",
   },
   education: {
     fields: [
@@ -38,27 +40,23 @@ const formConfigs: Record<string, FormConfig> = {
         label: "School Name",
         required: true,
       },
-      { name: "year", type: "textarea", label: "Year", required: true },
+      { name: "year", type: "text", label: "Year", required: true },
       { name: "location", type: "text", label: "Location", required: true },
       {
         name: "description",
         type: "text",
-        label: "Desccription",
+        label: "Description",
         required: true,
       },
     ],
-    submitButtonText: "Submit School / Acheivement",
+    submitButtonText: "Submit School / Achievement",
+    successMessage: "Education details added successfully! 🎓",
   },
   project: {
     fields: [
-      { name: "name", type: "text", label: "Name", required: true },
-      {
-        name: "startDate",
-        type: "textarea",
-        label: "Start Date",
-        required: true,
-      },
-      { name: "endDate", type: "textarea", label: "End Date", required: true },
+      { name: "name", type: "text", label: "Project Name", required: true },
+      { name: "startDate", type: "text", label: "Start Date", required: true },
+      { name: "endDate", type: "text", label: "End Date", required: true },
       {
         name: "githubLink",
         type: "text",
@@ -68,15 +66,15 @@ const formConfigs: Record<string, FormConfig> = {
       {
         name: "description",
         type: "text",
-        label: "Desccription",
+        label: "Description",
         required: true,
       },
     ],
-    submitButtonText: "Submit School / Acheivement",
+    submitButtonText: "Submit Project",
+    successMessage: "Your project has been added successfully! 💻",
   },
 };
 
-// Define the DynamicForm component
 type DynamicFormProps<T> = {
   endpoint: string;
   formType: keyof typeof formConfigs;
@@ -89,7 +87,8 @@ const DynamicForm = <T extends Record<string, any>>({
   onSubmit,
 }: DynamicFormProps<T>) => {
   const [formData, setFormData] = useState<Partial<T>>({});
-  const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const formConfig = formConfigs[formType];
 
   const handleChange = (
@@ -102,54 +101,64 @@ const DynamicForm = <T extends Record<string, any>>({
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await onSubmit(formData as T);
-    setIsModalOpen(false); // Close the modal after submission
+    setSuccessMessage(formConfig.successMessage);
+
+    // Automatically hide success message after 2 seconds
+    setTimeout(() => {
+      setSuccessMessage(null);
+    }, 2000);
   };
 
   return (
     <>
-      {/* Add Button to Open Modal */}
       <button className="add-button" onClick={() => setIsModalOpen(true)}>
-        Add New Entry
+        Add Your Own!
       </button>
 
-      {/* Modal Overlay */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>{formConfig.submitButtonText}</h2>
-            <form onSubmit={handleSubmit}>
-              {formConfig.fields.map((field) => (
-                <div key={field.name} className="form-field">
-                  <label>{field.label}</label>
-                  {field.type === "textarea" ? (
-                    <textarea
-                      name={field.name}
-                      value={formData[field.name] || ""}
-                      onChange={handleChange}
-                      required={field.required}
-                    />
-                  ) : (
-                    <input
-                      type={field.type}
-                      name={field.name}
-                      value={formData[field.name] || ""}
-                      onChange={handleChange}
-                      required={field.required}
-                    />
-                  )}
-                </div>
-              ))}
-              <button type="submit" className="submit-button">
-                {formConfig.submitButtonText}
-              </button>
-              <button
-                type="button"
-                className="cancel-button"
-                onClick={() => setIsModalOpen(false)}
-              >
-                Cancel
-              </button>
-            </form>
+
+            {!successMessage ? (
+              <form onSubmit={handleSubmit}>
+                {formConfig.fields.map((field) => (
+                  <div key={field.name} className="form-field">
+                    <label>{field.label}</label>
+                    {field.type === "textarea" ? (
+                      <textarea
+                        name={field.name}
+                        value={formData[field.name] || ""}
+                        onChange={handleChange}
+                        required={field.required}
+                      />
+                    ) : (
+                      <input
+                        type={field.type}
+                        name={field.name}
+                        value={formData[field.name] || ""}
+                        onChange={handleChange}
+                        required={field.required}
+                      />
+                    )}
+                  </div>
+                ))}
+                <button type="submit" className="submit-button">
+                  {formConfig.submitButtonText}
+                </button>
+                <button
+                  type="button"
+                  className="cancel-button"
+                  onClick={() => setIsModalOpen(false)}
+                >
+                  Cancel
+                </button>
+              </form>
+            ) : (
+              <p className="success-message">
+                {successMessage && <>{successMessage}</>}
+              </p>
+            )}
           </div>
         </div>
       )}

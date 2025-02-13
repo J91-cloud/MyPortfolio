@@ -16,6 +16,19 @@ const About = () => {
 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  let accessToken = localStorage.getItem("accessToken");
+
+  const handleSubmit = async <T extends Record<string, any>>(
+    endpoint: string,
+    data: T,
+  ) => {
+    try {
+      const response = await axiosInstance.post(endpoint, data);
+      console.log("Success:", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
 
   useEffect(() => {
     axiosInstance
@@ -121,31 +134,31 @@ const About = () => {
 
       <h1 className="font40 text-center font-bold">My Education</h1>
 
-      <div className="education-container">
-        <section className="education-section">
-          <h2>1 ---Bachelor's in Computer Science</h2>
-          <p>
-            Graduated from XYZ University in 2020, specializing in software
-            engineering and AI.
-          </p>
-        </section>
+      {accessToken ? (
+        <DynamicForm<educationRequestDTO>
+          endpoint="/education"
+          formType="education"
+          onSubmit={(data) => handleSubmit("/education", data)}
+        />
+      ) : (
+        <div>
+          <p></p>
+        </div>
+      )}
 
-        <section className="education-section">
-          <h2>2 ---Master's in Software Engineering</h2>
-          <p>
-            Completed a master's at ABC University in 2022, focusing on
-            full-stack development and microservices.
-          </p>
-        </section>
-
-        <section className="education-section">
-          <h2>3 ---Certified Cloud Architect</h2>
-          <p>
-            Achieved AWS Solutions Architect Certification in 2023, improving
-            cloud computing expertise.
-          </p>
-        </section>
-      </div>
+      {education.map((educationInfo, index) => (
+        <div key={index}>
+          <div className="education-container">
+            <section className="education-section">
+              <h2>{educationInfo.schoolName}</h2>
+              <p>{educationInfo.year}</p>
+              <p>{educationInfo.location}</p>
+              <hr />
+              <p>{educationInfo.description}</p>
+            </section>
+          </div>
+        </div>
+      ))}
 
       <h1 className="font30 font-bold text-center">Certificates</h1>
       <hr className="styled-line"></hr>

@@ -5,6 +5,8 @@ import projectRequestDTO from "../../Models/projectRequestDTO";
 import DynamicForm from "../../assets/DynamicForm";
 
 const Projects = () => {
+  let accessToken = localStorage.getItem("accessToken");
+
   const handleSubmit = async <T extends Record<string, any>>(
     endpoint: string,
     data: T,
@@ -28,11 +30,17 @@ const Projects = () => {
         </div>
       </div>
 
-      <DynamicForm<projectRequestDTO>
-        endpoint="/projects"
-        formType="project"
-        onSubmit={(data) => handleSubmit("/projects", data)}
-      />
+      {accessToken ? (
+        <DynamicForm<projectRequestDTO>
+          endpoint="/projects"
+          formType="project"
+          onSubmit={(data) => handleSubmit("/projects", data)}
+        />
+      ) : (
+        <div>
+          <p></p>
+        </div>
+      )}
 
       <DisplayProjects />
     </div>
