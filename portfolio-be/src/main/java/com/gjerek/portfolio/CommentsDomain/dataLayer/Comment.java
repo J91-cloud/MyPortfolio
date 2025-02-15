@@ -27,7 +27,11 @@ public class Comment {
 
     private String content;
 
+    @Enumerated(EnumType.STRING)
+    private Status status;
+
     private String profession;
+
 
 
 

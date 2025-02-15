@@ -4,5 +4,5 @@ services:
       context: ./portfolio-be
       dockerfile: Dockerfile
     ports:
-      - "8080:8080" 
+      - "8080:8080"
     container_name: backend-service

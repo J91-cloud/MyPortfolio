@@ -24,7 +24,9 @@
   display: inline-block;
 }
 .shadow-lg {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 10px 15px rgba(0, 0, 0, 0.1),
+    0 4px 6px rgba(0, 0, 0, 0.1);
 }
 .flex {
   display: flex;
@@ -48,6 +50,10 @@
   display: flow-root;
 }
 
+.text-center {
+  text-align: center;
+}
+
 .font5 {
   font-size: 5px;
 }
@@ -68,7 +74,6 @@
 .font40 {
   font-size: 40px;
 }
-
 
 .list {
   display: inline;
@@ -103,7 +108,7 @@
 .flex-wrap {
   flex-wrap: wrap;
 }
-.flex-wrap-reverse {
+.flex-wrapFerse {
   flex-wrap: wrap-reverse;
 }
 .flex-nowrap {
@@ -212,7 +217,9 @@
 .p-64 {
   padding: 16rem;
 }
-
+.ml{
+  margin-left: 0px;
+}
 /* Margin */
 .m-0 {
   margin: 0;
@@ -270,6 +277,10 @@
 }
 .m-auto {
   margin: auto;
+}
+
+.mr-16 {
+  margin-right: 4rem;
 }
 
 .mt-10 {
@@ -379,9 +390,7 @@
 .font-black {
   font-weight: 900;
 }
-
-/* Colors */
-.text-transparent {
+cur .text-transparent {
   color: transparent;
 }
 .text-current {
@@ -438,7 +447,7 @@
   background-color: #000000;
 }
 
-.bg-backS{
+.bg-backS {
   background-color: #1a1c29;
 }
 
@@ -742,11 +751,14 @@
 .w-64 {
   width: 16rem;
 }
+.w-84 {
+  width: 40rem;
+}
 .w-auto {
   width: auto;
 }
 .w-full {
-  width: 100%;
+  width: 40%;
 }
 .w-screen {
   width: 100vw;
@@ -922,8 +934,9 @@
 
 /* Transitions */
 .transition {
-  transition-property: background-color, border-color, color, fill, stroke,
-    opacity, box-shadow, transform;
+  transition-property:
+    background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -1565,4 +1578,105 @@
 }
 .decoration-8 {
   text-decoration-thickness: 8px;
+}
+
+.add-button {
+  color: #ff6b6b; /* --color-primary */
+  background-color: #1e1f25; /* --color-text */
+  border: 1px solid #ff6b6b;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Fira Code", monospace; /* --font-primary */
+  transition: all 0.3s ease; /* --transition-default */
+}
+
+.add-button:hover {
+  background-color: #373943; /* Darken --color-primary by 10% */
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #2a2c33; /* --color-secondary */
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  color: #ffffff; /* --color-text */
+  font-family: "Inter", sans-serif; /* --font-primary */
+}
+
+.modal-content h2 {
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif; /* --font-secondary */
+}
+
+.form-field {
+  margin-bottom: 15px;
+}
+
+.form-field label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-field input,
+.form-field textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.7); /* --color-text-secondary */
+  background-color: #1e1f25; /* --color-background */
+  color: #ffffff; /* --color-text */
+  font-family: "Inter", sans-serif; /* --font-primary */
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.submit-button {
+  background-color: #ff6b6b; /* --color-primary */
+  color: #ffffff; /* --color-text */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif; /* --font-primary */
+  transition: all 0.3s ease; /* --transition-default */
+  margin-right: 10px;
+}
+
+.submit-button:hover {
+  background-color: #e65a5a; /* Darken --color-primary by 10% */
+}
+
+.cancel-button {
+  background-color: transparent;
+  color: rgba(255, 255, 255, 0.7); /* --color-text-secondary */
+  border: 1px solid rgba(255, 255, 255, 0.7); /* --color-text-secondary */
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Inter", sans-serif; /* --font-primary */
+  transition: all 0.3s ease; /* --transition-default */
+}
+
+.cancel-button:hover {
+  background-color: rgba(255, 255, 255, 0.7); /* --color-text-secondary */
+  color: #ffffff; /* --color-text */
 }

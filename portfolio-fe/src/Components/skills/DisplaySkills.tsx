@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../assets/axiosInstance";
 import skillRequestDTO from "../../Models/skillRequestDTO";
-import "../../styles/global.css"
-
+import "../../styles/global.css";
 
 const SkillList: React.FC = () => {
   const [skills, setSkills] = useState<skillRequestDTO[]>([]);
@@ -39,7 +38,7 @@ const SkillList: React.FC = () => {
             {skills.map((skill, index) => (
               <li className="list" key={index}>
                 {skill.skillType}
-              </li> 
+              </li>
             ))}
           </ul>
         </div>
