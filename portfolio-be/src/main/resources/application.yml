@@ -8,10 +8,10 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:postgresql://host.docker.internal:5432/portfolio
-    username: postgres
-    password: pass
-    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://db-postgresql-tor1-09928-do-user-18947087-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+    username: doadmin
+    password: AVNS_6errXECsD4aWhVYNrAj
+    driver-class-name: org.postgresql.Driver
 
 management:
   endpoints:
@@ -21,8 +21,4 @@ management:
   endpoint:
     mappings:
       enabled: true
-#auth0:
-##  clientId: dErtDK4v3hzp0FoM26aX9qGDayGobMIs
-##  clientSecret: "hzlT0vFjt6RvkYIT9Y5mZcB6Vl_vAA3McVxf_2yMsmI4E074pQqbGn3G4ZpTxMXI"
-#  domain: dev-im24qkb6l7t2yhha.ca.auth0.com
-##  audience: https://dev-im24qkb6l7t2yhha.ca.auth0.com/api/v2/
+
