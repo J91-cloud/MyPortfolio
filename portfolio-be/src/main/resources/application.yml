@@ -1,5 +1,5 @@
 frontend-deployment:
-  url: http://localhost:3000
+  url: https://jellyfish-app-lgjgg.ondigitalocean.app
 
 spring:
   jpa:
