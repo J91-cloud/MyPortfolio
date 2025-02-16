@@ -1,4 +1,4 @@
-package com.gjerek.portfolio.AuthDomain.config;
+package com.gjerek.portfolio.AuthMessageDomain.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -37,6 +37,11 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST,"/api/v1/skills").hasAuthority("admin:articles")
+                        .requestMatchers(HttpMethod.POST,"/api/v1/education").hasAuthority("admin:articles")
+                        .requestMatchers(HttpMethod.DELETE,"/api/v1/education/**").hasAuthority("admin:articles")
+                        .requestMatchers(HttpMethod.POST,"/api/v1/projects").permitAll()
+                        .requestMatchers(HttpMethod.PATCH,"/api/v1/comments/**").hasAuthority("admin:articles")
+                        .requestMatchers(HttpMethod.DELETE,"/api/v1/projects/**").hasAuthority("admin:articles")
                         .anyRequest().permitAll()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2

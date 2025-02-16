@@ -21,3 +21,4 @@ management:
   endpoint:
     mappings:
       enabled: true
+

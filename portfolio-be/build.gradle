@@ -40,6 +40,8 @@ dependencies {
 	// Spring Boot Test dependencies
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
+	implementation 'org.springframework.boot:spring-boot-starter-mail'
+
 
 
 	// Spring Security for authentication and authorization

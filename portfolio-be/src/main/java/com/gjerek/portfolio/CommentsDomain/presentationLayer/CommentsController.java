@@ -4,9 +4,7 @@ import com.gjerek.portfolio.CommentsDomain.businessLayer.CommentsService;
 import com.gjerek.portfolio.CommentsDomain.dataLayer.Comment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,5 +22,23 @@ public class CommentsController {
     @GetMapping
     public ResponseEntity<List<Comment>> getComments() {
         return new ResponseEntity<>(commentsService.getComments(), HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Comment> addComment(@RequestBody CommentRequestDTO commentRequestDTO) {
+        Comment newComment = commentsService.publishCommentForReview(commentRequestDTO);
+        return new ResponseEntity<>(newComment, HttpStatus.CREATED);
+    }
+
+
+    @PatchMapping("/{commentId}")
+    public ResponseEntity<Void> reviewComment(@PathVariable String commentId) {
+        commentsService.acceptCommentForReview(commentId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @DeleteMapping ("/{commentId}")
+    public ResponseEntity<Void> deleteComment(@PathVariable String commentId) {
+        commentsService.deleteComment(commentId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }
