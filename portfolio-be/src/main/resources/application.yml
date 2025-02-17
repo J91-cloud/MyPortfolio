@@ -1,5 +1,5 @@
 frontend-deployment:
-  url: https://jellyfish-app-lgjgg.ondigitalocean.app
+  url: https://sea-turtle-app-xqswa.ondigitalocean.app
 
 spring:
   jpa:
