@@ -163,6 +163,10 @@ const About = () => {
       <h1 className="font30 font-bold text-center">Certificates</h1>
       <hr className="styled-line"></hr>
 
+      <div>
+        
+      </div>
+
       <div className="letter-image">
         <div className="animated-mail">
           <div className="back-fold"></div>
