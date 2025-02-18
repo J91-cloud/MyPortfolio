@@ -1,31 +1,65 @@
+import { useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import Login from "../../pages/auth/Login";
+import LanguageSwitcher from "../../assets/LanguageSwitcher";
 
 const Navbar = () => {
   const location = useLocation();
   let accessToken = localStorage.getItem("accessToken");
 
+  useEffect(() => {
+    // Load Google Translate script dynamically
+    const addGoogleTranslateScript = () => {
+      // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+      if (!window.google) {
+        const script = document.createElement("script");
+        script.src =
+          "https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
+        script.async = true;
+        document.body.appendChild(script);
+      }
+
+      // Initialize Google Translate
+      // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+      window.googleTranslateElementInit = () => {
+        // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+        new window.google.translate.TranslateElement(
+          { pageLanguage: "en", includedLanguages: "en,fr" }, // Add other languages if needed
+          "google_translate_element"
+        );
+      };
+    };
+
+    addGoogleTranslateScript();
+  }, []);
+
   const handleLanguageChange = (lang: string) => {
-    const googleTranslateElement = document.querySelector(
-      ".goog-te-combo"
-    ) as HTMLSelectElement;
+    // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+    const googleTranslateElement = window.google.translate.TranslateElement;
 
     if (googleTranslateElement) {
-      googleTranslateElement.value = lang;
-      googleTranslateElement.dispatchEvent(new Event("change"));
-      console.log(`Language changed to: ${lang}`);
+      // Find the select dropdown and set the value to the selected language
+      const translateElement = document.querySelector("#google_translate_element select");
+      if (translateElement) {
+        // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+        translateElement.value = lang;
+        // Trigger a change event to notify Google Translate of the language change
+        translateElement.dispatchEvent(new Event("change"));
+        console.log(`Language changed to: ${lang}`);
+      } else {
+        console.error("Google Translate dropdown not found");
+      }
     } else {
-      console.error("Google Translate dropdown not found");
+      console.error("Google Translate element not initialized");
     }
   };
 
   return (
     <>
-      {/* Google Translate Element (hidden) */}
+      {/* Google Translate Element */}
       <div id="google_translate_element" style={{ display: "none" }}></div>
 
-      {/* Your Existing Navbar */}
       <nav className={styles.navbar}>
         <div className={`container ${styles.navContainer}`}>
           <Link to="/" className={styles.logo}>
@@ -72,18 +106,16 @@ const Navbar = () => {
               Contact
             </Link>
             <button className={styles.hireButton}>
-              {" "}
               <Login />
             </button>
 
-            {/* Language Dropdown */}
+            
             <div className={styles.languageDropdown}>
-              <select
-                onChange={(e) => handleLanguageChange(e.target.value)}
-              >
+              <select onChange={(e) => handleLanguageChange(e.target.value)}>
                 <option value="en">English</option>
                 <option value="fr">French</option>
               </select>
+              
             </div>
           </div>
         </div>

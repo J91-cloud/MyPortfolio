@@ -1,5 +1,6 @@
 frontend-deployment:
-  url: https://sea-turtle-app-xqswa.ondigitalocean.app
+ url: https://sea-turtle-app-xqswa.ondigitalocean.app
+  # url: http://localhost:3000
 
 spring:
   jpa:
@@ -22,3 +23,26 @@ management:
     mappings:
       enabled: true
 
+#frontend-deployment:
+#  url: http://localhost:3000
+#
+#spring:
+#  jpa:
+#    database: POSTGRESQL
+#    show-sql: true
+#    hibernate:
+#      ddl-auto: update
+#  datasource:
+#    url: jdbc:postgresql://host.docker.internal:5432/portfolio
+#    username: postgres
+#    password: pass
+#    driverClassName: org.postgresql.Driver
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
+#  endpoint:
+#    mappings:
+#      enabled: true
