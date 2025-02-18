@@ -16,7 +16,7 @@ export class AuthService {
       authorizationParams: {
 
         // redirect_uri: "http://localhost:3000",   
-        redirect_uri: "https://jellyfish-app-lgjgg.ondigitalocean.app",
+        redirect_uri: "https://sea-turtle-app-xqswa.ondigitalocean.app",
 
         audience: "http://localhost:8080/api/userInfo",
         scope: "openid profile email roles",
