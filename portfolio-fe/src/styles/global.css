@@ -1274,6 +1274,10 @@ cur .text-transparent {
 .bg-blend-normal {
   background-blend-mode: normal;
 }
+
+.bg-bluePowder {
+  background-color: rgb(112, 151, 156);
+}
 .bg-blend-multiply {
   background-blend-mode: multiply;
 }

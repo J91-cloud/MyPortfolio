@@ -78,7 +78,10 @@ const DisplayProjects: React.FC = () => {
                             <p className="card-text">
                               {project.startDate} - {project.endDate}
                             </p>
-                            <a className="card-text">{project.githubLink}</a>
+                            <a className="card-text" href={project.githubLink} target="_blank" rel="noopener noreferrer">
+  {project.githubLink}
+</a>
+
                             {accessToken ? (
                               <UpdateProject projectId={project.projectId} />
                             ) : (
