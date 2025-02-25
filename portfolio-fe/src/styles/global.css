@@ -8,6 +8,10 @@
   width: 33%;
 }
 
+.width66 {
+  width: 66%;
+}
+
 .row {
   display: inline-flex;
 }
@@ -443,6 +447,9 @@ cur .text-transparent {
 .text-gray-900 {
   color: #111827;
 }
+.text-green-400 {
+  color: rgb(10, 188, 10);
+}
 
 /* Background Colors */
 .bg-transparent {
@@ -844,6 +851,10 @@ cur .text-transparent {
 }
 .hover\:-rotate-180:hover {
   transform: rotate(-180deg);
+}
+
+.bg-powder{
+  background-color: rgb(131, 156, 159);
 }
 
 .hover\:text-opacity-0:hover {

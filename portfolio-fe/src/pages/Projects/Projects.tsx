@@ -48,6 +48,10 @@ const Projects = () => {
       )}
 
       <DisplayProjects />
+
+      <hr />
+
+      <h1>Thanks for finishing </h1>
     </div>
   );
 };
