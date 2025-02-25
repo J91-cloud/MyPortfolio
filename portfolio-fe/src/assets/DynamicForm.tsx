@@ -102,6 +102,7 @@ const DynamicForm = <T extends Record<string, any>>({
     e.preventDefault();
     await onSubmit(formData as T);
     setSuccessMessage(formConfig.successMessage);
+    window.location.reload();
 
     // Automatically hide success message after 2 seconds
     setTimeout(() => {

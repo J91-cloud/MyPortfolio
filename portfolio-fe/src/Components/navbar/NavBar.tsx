@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import styles from "./Navbar.module.css";
 import Login from "../../pages/auth/Login";
-import LanguageSwitcher from "../../assets/LanguageSwitcher";
 
 const Navbar = () => {
   const location = useLocation();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   let accessToken = localStorage.getItem("accessToken");
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const Navbar = () => {
         // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
         new window.google.translate.TranslateElement(
           { pageLanguage: "en", includedLanguages: "en,fr" }, // Add other languages if needed
-          "google_translate_element"
+          "google_translate_element",
         );
       };
     };
@@ -40,7 +40,9 @@ const Navbar = () => {
 
     if (googleTranslateElement) {
       // Find the select dropdown and set the value to the selected language
-      const translateElement = document.querySelector("#google_translate_element select");
+      const translateElement = document.querySelector(
+        "#google_translate_element select",
+      );
       if (translateElement) {
         // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
         translateElement.value = lang;
@@ -55,6 +57,10 @@ const Navbar = () => {
     }
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
       {/* Google Translate Element */}
@@ -65,7 +71,7 @@ const Navbar = () => {
           <Link to="/" className={styles.logo}>
             Jessy Gjerek
           </Link>
-          <div className={styles.navLinks}>
+          <div className={`${styles.navLinks} ${isMenuOpen ? styles.open : ""}`}>
             {accessToken ? (
               <Link
                 to="/commentDashboard"
@@ -109,14 +115,17 @@ const Navbar = () => {
               <Login />
             </button>
 
-            
             <div className={styles.languageDropdown}>
               <select onChange={(e) => handleLanguageChange(e.target.value)}>
                 <option value="en">English</option>
                 <option value="fr">French</option>
               </select>
-              
             </div>
+          </div>
+          <div className={styles.hamburger} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </nav>

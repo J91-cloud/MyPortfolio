@@ -17,7 +17,7 @@ interface Timeline3DProps {
 const Timeline3D: React.FC<Timeline3DProps> = ({ projects }) => {
   // Sort projects by endDate
   const sortedProjects = projects.sort(
-    (a, b) => new Date(a.endDate).getTime() - new Date(b.endDate).getTime()
+    (a, b) => new Date(a.endDate).getTime() - new Date(b.endDate).getTime(),
   );
 
   return (
@@ -36,7 +36,11 @@ const Timeline3D: React.FC<Timeline3DProps> = ({ projects }) => {
               <p>{project.description}</p>
               <p>Start: {project.startDate}</p>
               <p>End: {project.endDate}</p>
-              <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 GitHub
               </a>
             </div>

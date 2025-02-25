@@ -32,9 +32,9 @@
   display: flex;
 }
 
-.rowline{
-  display: flex; 
-  flex-direction: row;  /* Ensures elements are in a row */
+.rowline {
+  display: flex;
+  flex-direction: row; /* Ensures elements are in a row */
   justify-content: center; /* Centers content */
   align-items: center; /* Aligns vertically */
   gap: 16px; /* Adds spacing between elements */
@@ -225,7 +225,7 @@
 .p-64 {
   padding: 16rem;
 }
-.ml{
+.ml {
   margin-left: 0px;
 }
 /* Margin */

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../assets/axiosInstance";
+import DeleteProject from "./DeleteProjects";
 import UpdateProject from "./UpdateProject";
-import "./DisplayProjects.css"
+import "./DisplayProjects.css";
 
 interface projectRequestDTO {
-  projectId: string; // ✅ Use lowercase "string"
+  projectId: string; 
   description: string;
   startDate: string;
   endDate: string;
@@ -33,7 +34,7 @@ const DisplayProjects: React.FC = () => {
             endDate: project.endDate,
             name: project.name,
             githubLink: project.githubLink,
-          })
+          }),
         );
 
         setProjects(projectData);
@@ -68,16 +69,26 @@ const DisplayProjects: React.FC = () => {
                             Published On - {project.endDate}
                           </div>
                           <div className="card-body">
-                            <h5 className="card-title font40">{project.name}</h5>
+                            <h5 className="card-title font40">
+                              {project.name}
+                            </h5>
                             <p className="card-text">{project.description}</p>
                             <hr />
-              
+
                             <p className="card-text">
                               {project.startDate} - {project.endDate}
                             </p>
-                            <p className="card-text">{project.githubLink}</p>
+                            <a className="card-text">{project.githubLink}</a>
                             {accessToken ? (
                               <UpdateProject projectId={project.projectId} />
+                            ) : (
+                              <div>
+                                <p></p>
+                              </div>
+                            )}
+
+                            {accessToken ? (
+                              <DeleteProject projectId={project.projectId} />
                             ) : (
                               <div>
                                 <p></p>

@@ -10,5 +10,6 @@ public interface SkillService {
 
     List<Skill> getAllSkills();
     Skill addSkill(SkillRequestDTO skillRequestDTO);
+    void deleteSkill(String skillId);
 
 }

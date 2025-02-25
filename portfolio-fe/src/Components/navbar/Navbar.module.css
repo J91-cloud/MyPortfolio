@@ -13,6 +13,8 @@
   align-items: center;
   height: 80px;
   padding: 0 24px;
+  max-width: 1200px; /* Optional: Add a max-width for better alignment */
+  margin: 0 auto; /* Center the container */
 }
 
 .logo {
@@ -52,4 +54,45 @@
 
 .hireButton:hover {
   background-color: #ff5252;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  z-index: 1001; /* Ensure the hamburger is above other elements */
+}
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-text); /* Use your text color variable */
+  margin: 4px 0;
+  transition: 0.4s;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .navLinks {
+    display: none; /* Hide nav links by default on smaller screens */
+    flex-direction: column;
+    position: absolute;
+    top: 80px; /* Adjust based on navbar height */
+    right: 0;
+    background-color: rgba(30, 31, 37, 0.8); /* Match navbar background */
+    backdrop-filter: blur(8px); /* Match navbar blur */
+    width: 100%;
+    padding: 1rem 0;
+    gap: 16px; /* Reduce gap for mobile */
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .navLinks.open {
+    display: flex; /* Show nav links when menu is open */
+  }
 }
