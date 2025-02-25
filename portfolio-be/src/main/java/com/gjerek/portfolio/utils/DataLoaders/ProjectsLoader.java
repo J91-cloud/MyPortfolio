@@ -16,7 +16,7 @@ public class ProjectsLoader {
                 .name("Champlain Pet Clinic")
                 .startDate("October 2024")
                 .endDate("December 2024")
-                .projectIdentifier(new ProjectIdentifier("666d087b-e708-4293-925b-40b297274166"))
+                .projectIdentifier(new ProjectIdentifier("CC6d087b-e708-4293-925b-40b2972741EE"))
                 .description("Fictional Pet Clinic we built as a class of 40, utilized git for and Jira to follow Scrum methodology.")
                 .githubLink("https://github.com/cgerard321/champlain_petclinic.git")
                 .build();
