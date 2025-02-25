@@ -1,30 +1,6 @@
-frontend-deployment:
- url: https://sea-turtle-app-xqswa.ondigitalocean.app
-#   url: http://localhost:3000
-
-spring:
-  jpa:
-    database: POSTGRESQL
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-  datasource:
-    url: jdbc:postgresql://db-postgresql-tor1-09928-do-user-18947087-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require
-    username: doadmin
-    password: AVNS_6errXECsD4aWhVYNrAj
-    driver-class-name: org.postgresql.Driver
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    mappings:
-      enabled: true
-
 #frontend-deployment:
-#  url: http://localhost:3000
+# url: https://sea-turtle-app-xqswa.ondigitalocean.app
+##   url: http://localhost:3000
 #
 #spring:
 #  jpa:
@@ -33,10 +9,10 @@ management:
 #    hibernate:
 #      ddl-auto: update
 #  datasource:
-#    url: jdbc:postgresql://host.docker.internal:5432/portfolio
-#    username: postgres
-#    password: pass
-#    driverClassName: org.postgresql.Driver
+#    url: jdbc:postgresql://db-postgresql-tor1-09928-do-user-18947087-0.d.db.ondigitalocean.com:25060/defaultdb?sslmode=require
+#    username: doadmin
+#    password: AVNS_6errXECsD4aWhVYNrAj
+#    driver-class-name: org.postgresql.Driver
 #
 #management:
 #  endpoints:
@@ -46,3 +22,27 @@ management:
 #  endpoint:
 #    mappings:
 #      enabled: true
+
+frontend-deployment:
+  url: http://localhost:3000
+
+spring:
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5432/portfolio
+    username: postgres
+    password: pass
+    driverClassName: org.postgresql.Driver
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    mappings:
+      enabled: true

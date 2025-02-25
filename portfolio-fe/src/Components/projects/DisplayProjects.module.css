@@ -1,0 +1,64 @@
+.stack_container {
+  width: 200px;
+  overflow: hidden;
+  height: 50vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  margin-left: 246px;
+  height: 400px;
+  background-color: rgb(48, 45, 60);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transition:
+    transform 0.6s ease,
+    opacity 0.6s ease,
+    z-index 0.6s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.card h2 {
+  color: #007bff;
+  margin: 0;
+  font-size: 24px;
+}
+
+.card p {
+  margin: 10px 0;
+  font-size: 16px;
+  color: black;
+}
+
+.card a {
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}
+
+.active {
+  z-index: 10; /* Ensure the active card is on top */
+}
+
+.images {
+  height: 174px;
+  width: 183px;
+  align-items: center;
+  margin: 20px;
+
+}

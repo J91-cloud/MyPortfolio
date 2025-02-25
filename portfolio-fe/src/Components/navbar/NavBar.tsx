@@ -71,7 +71,9 @@ const Navbar = () => {
           <Link to="/" className={styles.logo}>
             Jessy Gjerek
           </Link>
-          <div className={`${styles.navLinks} ${isMenuOpen ? styles.open : ""}`}>
+          <div
+            className={`${styles.navLinks} ${isMenuOpen ? styles.open : ""}`}
+          >
             {accessToken ? (
               <Link
                 to="/commentDashboard"
