@@ -29,6 +29,12 @@ public class SkillServiceImpl implements SkillService{
         return skillRepository.save(skill);
     }
 
+    @Override
+    public void deleteSkill(String skillId) {
+        Skill skill = skillRepository.findSkillBySkillIdentifier_SkillId(skillId);
+        skillRepository.delete(skill);
+    }
+
     // Converts SkillRequestDTO into Skill Entity
     private Skill toSkillEntity(SkillRequestDTO skillRequestDTO) {
         return Skill.builder()

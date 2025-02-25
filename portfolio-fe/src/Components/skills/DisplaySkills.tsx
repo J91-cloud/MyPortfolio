@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axiosInstance from "../../assets/axiosInstance";
 import skillRequestDTO from "../../Models/skillRequestDTO";
+import DeleteSkill from "./DeleteSkills";
 import "../../styles/global.css";
 
 const SkillList: React.FC = () => {
   const [skills, setSkills] = useState<skillRequestDTO[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
+  let accessToken = localStorage.getItem("accessToken");
 
   useEffect(() => {
     axiosInstance
@@ -14,6 +16,7 @@ const SkillList: React.FC = () => {
       .then((response) => {
         const skillData: skillRequestDTO[] = response.data.map(
           (skill: any) => ({
+            skillId: skill.skillIdentifier?.skillId || skill.skillId,
             skillType: skill.skillType, // Extract only skillType
           }),
         );
@@ -38,6 +41,13 @@ const SkillList: React.FC = () => {
             {skills.map((skill, index) => (
               <li className="list" key={index}>
                 {skill.skillType}
+                {accessToken ? (
+                  <DeleteSkill skillId={skill.skillId} />
+                ) : (
+                  <div>
+                    <p></p>
+                  </div>
+                )}
               </li>
             ))}
           </ul>

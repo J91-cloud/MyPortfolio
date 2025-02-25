@@ -14,8 +14,7 @@ export class AuthService {
       domain: "dev-im24qkb6l7t2yhha.ca.auth0.com",
       clientId: "COuKmAH95MAHPN2irCzsuOearf2gdsOH",
       authorizationParams: {
-
-        // redirect_uri: "http://localhost:3000",   
+        // redirect_uri: "http://localhost:3000",
         redirect_uri: "https://sea-turtle-app-xqswa.ondigitalocean.app",
 
         audience: "http://localhost:8080/api/userInfo",

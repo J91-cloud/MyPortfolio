@@ -23,10 +23,15 @@ const Projects = () => {
     <div className="container">
       <div className="grid grid-cols-2">
         <div>
-          <h1 className="font40 text-powderblue font-extrabold">These are all my Projets!</h1>
+          <h1 className="font40 text-powderblue font-extrabold">
+            These are all my Projets!
+          </h1>
         </div>
         <div>
-          <h1 className="p-4 font20 font-extrabold">These projects are all i have created at school or on my own time. They consist of web development, terminal work and much more. </h1>
+          <h1 className="p-4 font20 font-extrabold">
+            These projects are all i have created at school or on my own time.
+            They consist of web development, terminal work and much more.{" "}
+          </h1>
         </div>
       </div>
 

@@ -33,4 +33,12 @@ public class SkillController {
         return new ResponseEntity<>(savedSkill, HttpStatus.CREATED);
     }
 
+    @DeleteMapping("/{skillId}")
+    public ResponseEntity<Void> deleteSkill(@PathVariable String skillId) {
+        skillService.deleteSkill(skillId);
+        return ResponseEntity.noContent().build(); // Returns HTTP 204 No Content
+    }
+
+
+
 }

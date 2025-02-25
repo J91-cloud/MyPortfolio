@@ -43,6 +43,7 @@ const AcceptComments: React.FC = () => {
   const handleAcceptComment = async (commentId: String) => {
     try {
       const response = await axiosInstance.patch(`/comments/${commentId}`);
+      window.location.reload();
     } catch (error) {
       console.error("Error:", error);
     }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Translate } from "@phosphor-icons/react";
-import GoogleTranslator from "../assets/GoogleTranslator";  // Ensure this is the correct path for GoogleTranslator
+import GoogleTranslator from "../assets/GoogleTranslator"; // Ensure this is the correct path for GoogleTranslator
 
 interface LanguageSwitcherProps {
   className?: string;

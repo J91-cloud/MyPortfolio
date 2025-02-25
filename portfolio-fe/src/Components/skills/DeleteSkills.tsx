@@ -2,26 +2,26 @@ import React from "react";
 import axiosInstance from "../../assets/axiosInstance";
 import { Button } from "@mui/material";
 
-interface DeleteCommentProps {
-  commentId: string;
+interface DeleteSkillProps {
+  skillId: string;
 }
 
-const DeleteComment: React.FC<DeleteCommentProps> = ({ commentId }) => {
+const DeleteSkill: React.FC<DeleteSkillProps> = ({ skillId }) => {
   const handleClick = async () => {
     try {
-      await axiosInstance.delete(`/comments/${commentId}`);
-      console.log("Comment deleted successfully");
+      await axiosInstance.delete(`/skills/${skillId}`);
+      console.log("Skill deleted successfully");
       window.location.reload();
     } catch (error) {
-      console.error("Error deleting comment:", error);
+      console.error("Error deleting skill:", error);
     }
   };
 
   return (
     <Button variant="contained" color="error" onClick={handleClick}>
-      Delete Comment
+      Delete Skill
     </Button>
   );
 };
 
-export default DeleteComment;
+export default DeleteSkill;

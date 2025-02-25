@@ -6,7 +6,11 @@ interface GoogleTranslatorProps {
   show: boolean;
 }
 
-const GoogleTranslator = ({ selectedLanguage, handleLanguageChange, show }: GoogleTranslatorProps) => {
+const GoogleTranslator = ({
+  selectedLanguage,
+  handleLanguageChange,
+  show,
+}: GoogleTranslatorProps) => {
   const translateElementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -21,13 +25,13 @@ const GoogleTranslator = ({ selectedLanguage, handleLanguageChange, show }: Goog
           script.async = true;
           document.body.appendChild(script);
         }
-        
-// @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+
+        // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
         window.googleTranslateElementInit = () => {
-            // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
+          // @ts-expect-error : Types are not available for google translate or not of concern at the moment.
           new window.google.translate.TranslateElement(
             { pageLanguage: selectedLanguage, includedLanguages: "en,fr" }, // Languages you want to support
-            translateElementRef.current
+            translateElementRef.current,
           );
         };
       };
@@ -39,7 +43,10 @@ const GoogleTranslator = ({ selectedLanguage, handleLanguageChange, show }: Goog
   return (
     <div>
       {show && (
-        <div ref={translateElementRef} style={{ display: "inline-block" }}></div>
+        <div
+          ref={translateElementRef}
+          style={{ display: "inline-block" }}
+        ></div>
       )}
     </div>
   );
