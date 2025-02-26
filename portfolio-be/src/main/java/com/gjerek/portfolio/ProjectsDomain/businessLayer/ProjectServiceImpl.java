@@ -35,6 +35,9 @@ public class ProjectServiceImpl implements ProjectService {
                 .githubLink(projectRequestDTO.getGithubLink())
                 .endDate(projectRequestDTO.getEndDate())
                 .startDate(projectRequestDTO.getStartDate())
+                .githubClone(projectRequestDTO.getGithubClone())
+                .category(projectRequestDTO.getCategory())
+                .imageUrl(projectRequestDTO.getImageUrl())
                 .build();
         return projectRepository.save(project);
     }
@@ -47,6 +50,9 @@ public class ProjectServiceImpl implements ProjectService {
         project.setGithubLink(projectRequestDTO.getGithubLink());
         project.setEndDate(projectRequestDTO.getEndDate());
         project.setStartDate(projectRequestDTO.getStartDate());
+        project.setImageUrl(projectRequestDTO.getImageUrl());
+        project.setCategory(projectRequestDTO.getCategory());
+        project.setGithubClone(projectRequestDTO.getGithubClone());
         return projectRepository.save(project);
     }
 

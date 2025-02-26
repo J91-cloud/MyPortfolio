@@ -9,6 +9,7 @@ import axiosInstanceAuth from "../../assets/axiosIntanceAuth";
 import axiosInstance from "../../assets/axiosInstance";
 import commentRequestDTO from "../../Models/commentRequestDTO";
 import UpdateProfile from "../../Components/profile/UpdateFrofile";
+import PopUpSuccess from "../../assets/PopUpSuccess";
 
 const Home = () => {
   let accessToken = localStorage.getItem("accessToken");
@@ -32,6 +33,7 @@ const Home = () => {
     try {
       const response = await axiosInstance.post(endpoint, data);
       console.log("Success:", response.data);
+      <PopUpSuccess message="Thanks you" />
     } catch (error) {
       console.error("Error:", error);
     }

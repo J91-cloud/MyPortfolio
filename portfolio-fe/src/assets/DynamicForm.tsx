@@ -57,6 +57,10 @@ const formConfigs: Record<string, FormConfig> = {
       { name: "name", type: "text", label: "Project Name", required: true },
       { name: "startDate", type: "text", label: "Start Date", required: true },
       { name: "endDate", type: "text", label: "End Date", required: true },
+      { name: "githubClone", type: "text", label: "githubClone", required: true },
+      { name: "imageURL", type: "text", label: "imageURL", required: true },
+      { name: "category", type: "text", label: "Category", required: true },
+      
       {
         name: "githubLink",
         type: "text",
@@ -102,12 +106,17 @@ const DynamicForm = <T extends Record<string, any>>({
     e.preventDefault();
     await onSubmit(formData as T);
     setSuccessMessage(formConfig.successMessage);
-    window.location.reload();
+    
 
-    // Automatically hide success message after 2 seconds
+    
     setTimeout(() => {
       setSuccessMessage(null);
+    }, 1500);
+
+    setTimeout(() => {
+      window.location.reload();
     }, 2000);
+     
   };
 
   return (

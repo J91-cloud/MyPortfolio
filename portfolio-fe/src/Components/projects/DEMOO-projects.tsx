@@ -26,10 +26,6 @@ const DisplayProjects: React.FC = () => {
   const cardsRef = useRef<HTMLDivElement[]>([]);
   let accessToken = localStorage.getItem("accessToken");
 
-
-
-
-
   useEffect(() => {
     axiosInstance
       .get("/projects")
@@ -102,89 +98,73 @@ const DisplayProjects: React.FC = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-
-
-return (
-  <div className="container">
-    <div className="grid grid-cols-2">
-      <div>
-        <div className={styles.stack_container}>
-          {projects.map((project, index) => (
-            <div
-              key={project.projectId}
-              className={`${styles.card} ${
-                index === currentIndex ? styles.active : ""
-              }`}
-              ref={(el) => {
-                if (el) cardsRef.current[index] = el;
-              }}
-              style={{
-                zIndex: projects.length - index,
-                transform:
-                  index === currentIndex ? "translateY(0)" : "translateY(100%)",
-                opacity: index === currentIndex ? "1" : "0",
-                transition: "transform 0.5s ease-in-out, opacity 0.5s ease-in-out",
-                position: "absolute",
-                width: "40%",
-              }}
-            >
-              <h2>{project.name}</h2>
-              <p>{project.description}</p>
-              <p>Start Date: {project.startDate}</p>
-              <p>End Date: {project.endDate}</p>
-              <p>{project.githubLink}</p>
-              <a
-                href={project.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
+  return (
+    <div className="container">
+      <div className="grid grid-cols-2">
+        <div>
+          <div className={styles.stack_container}>
+            {projects.map((project, index) => (
+              <div
+                key={project.projectId}
+                className={`${styles.card} ${
+                  index === currentIndex ? styles.active : ""
+                }`}
+                ref={(el) => {
+                  if (el) cardsRef.current[index] = el;
+                }}
+                style={{
+                  zIndex: projects.length - index, // Ensure proper stacking order
+                  transform:
+                    index < currentIndex ? "translateY(100%)" : "translateY(0)",
+                  opacity: index < currentIndex ? "0" : "1",
+                }}
               >
-                GitHub Link
-              </a>
-              {accessToken && (
-                <>
-                  <UpdateProject projectId={project.projectId} />
-                  <DeleteProject projectId={project.projectId} />
-                </>
-              )}
+                <h2>{project.name}</h2>
+                <p>{project.description}</p>
+                <p>Start Date: {project.startDate}</p>
+                <p>End Date: {project.endDate}</p>
+      
+                <a
+                  href={project.githubLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  GitHub Link
+                </a>
+                {accessToken && (
+                  <>
+                    <UpdateProject projectId={project.projectId} />
+                    <DeleteProject projectId={project.projectId} />
+                  </>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+        <div className="flex">
+          <img src="https://media-hosting.imagekit.io//a7dd1707b4574a32/Schedule.png?Expires=1835187479&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=sOuej1jkoNiNaiiOHK4uPWEDXOF8QoJXNG~WuZOzbJ7FURrWEKqDzOGjXymxb53-kTbRiN6tVBhk40AhqohwxDoBwaNMhx85hO8xLvBAdeUfQi7ESBua4JhPnZj-9De7GffTTNpo83HAdhTjYO1hwye2V1mjeCvHdY5LZUZQlVIB3NYu9EeFfcWnloSd7tcsiEQo8xclGX6W3qWK2J0CqJR9Krmgo2Tpw5ENZMHOpdAOrybnLLnN~KeXGBxs865CHNZKroyp0uvXpwakWl7d21G9VnyAQIaj8SuEBXCPcr0z63uuMrgfe9TLDQFDlxSZWuncL2xoAfUvJXAea7TKsQ__" className={styles.images} alt="" />
+          <aside className="bg-black text-white p-6 rounded-lg width66 max-w-lg font-mono">
+            <div className="flex justify-between items-center">
+              <div className="flex space-x-2 text-red-500">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              </div>
+              <p className="text-sm">bash</p>
             </div>
-          ))}
+            <div className="mt-4">
+              <p className="text-green-400">$ npm install git</p>
+              <p className="text-white"> git clone https://champlain_petclinic.com</p>
+              <p className="text-white">
+                added 1 package, and audited 2 packages in 3s
+              </p>
+              <p className="text-green-400">$</p>
+            </div>
+          </aside>
         </div>
       </div>
-
-      {/* Image + GitHub Clone Section (Only one at a time) */}
-      <div className="relative">
-        {projects.map((project, index) => (
-          index === currentIndex && (
-            <div key={project.projectId} className="flex">
-              <img src={project.imageUrl} className={styles.images} alt="" />
-              <aside className="bg-black text-white p-6 rounded-lg width66 max-w-lg font-mono">
-                <div className="flex justify-between items-center">
-                  <div className="flex space-x-2 text-red-500">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  </div>
-                  <p className="text-sm">bash</p>
-                </div>
-                <div className="mt-4">
-                  <p className="text-green-400">$ npm install git</p>
-                  <p className="text-white">{project.githubClone}</p>
-                  <p className="text-white">
-                    added 1 package, and audited 2 packages in 3s
-                  </p>
-                  <p className="text-green-400">$</p>
-                </div>
-              </aside>
-            </div>
-          )
-        ))}
-      </div>
-
     </div>
-  </div>
-);
-
-  
+  );
 };
 
 export default DisplayProjects;
