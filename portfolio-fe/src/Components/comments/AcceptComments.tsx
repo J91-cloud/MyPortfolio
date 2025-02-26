@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import axiosInstance from "../../assets/axiosIntanceAuth";
 import commentRequestDTO from "../../Models/commentRequestDTO_Id";
 import React from "react";
+import DeleteComment from "./DeleteComments";
 
 const AcceptComments: React.FC = () => {
   const [comments, setComments] = useState<commentRequestDTO[]>([]);
@@ -26,8 +27,8 @@ const AcceptComments: React.FC = () => {
         setLoading(false);
       })
       .catch((error) => {
-        console.error("Error fetching comments:", error);
-        setError("Failed to fetch comments.");
+        console.error("Error ", error);
+        setError("Please Sign In again your token has expired");
         setLoading(false);
       });
   }, []);
@@ -80,6 +81,10 @@ const AcceptComments: React.FC = () => {
               >
                 ✅ Accept
               </button>
+
+             
+              <DeleteComment commentId={comment.commentId} />
+            
             </div>
           ))}
       </div>

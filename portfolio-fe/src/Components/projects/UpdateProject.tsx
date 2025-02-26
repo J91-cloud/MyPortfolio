@@ -25,6 +25,9 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
     startDate: "",
     endDate: "",
     githubLink: "",
+    imageUrl: "",
+    githubClone: "",
+    category: "",
   });
 
   useEffect(() => {
@@ -130,6 +133,30 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
               name="githubLink"
               label="GitHub Link"
               value={formData.githubLink}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="githubClone"
+              label="GitHub Clone Link"
+              value={formData.githubClone}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="imageUrl"
+              label="ImageURL"
+              value={formData.imageUrl}
+              onChange={handleInputChange}
+              fullWidth
+              margin="normal"
+            />
+            <TextField
+              name="category"
+              label="Category"
+              value={formData.category}
               onChange={handleInputChange}
               fullWidth
               margin="normal"

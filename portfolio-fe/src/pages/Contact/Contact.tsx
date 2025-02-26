@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axiosInstance from "../../assets/axiosInstance";
 import "../../styles/global.css";
+import PopUpSuccess from "../../assets/PopUpSuccess";
+
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -20,9 +22,10 @@ const ContactForm: React.FC = () => {
     e.preventDefault();
     try {
       const response = await axiosInstance.post("/contact", formData);
-      alert("Message sent successfully!");
+
+      alert("Thank you i will get back to you shortly")
+      
       setFormData({ name: "", email: "", message: "" }); // Reset form
-      window.location.reload();
     } catch (error) {
       alert("Failed to send message. Please try again.");
       console.error(error);

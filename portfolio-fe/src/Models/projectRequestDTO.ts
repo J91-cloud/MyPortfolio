@@ -4,4 +4,7 @@ export default interface projectRequestDTO {
   endDate: String;
   name: String;
   githubLink: String;
+  imageUrl: string;
+  githubClone: string;
+  category: string;
 }

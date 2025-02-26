@@ -255,8 +255,8 @@
 }
 
 .image-container img {
-  width: 140px;
-  height: 110px; /* Optional: Set the maximum width of images */
+  width: 160px;
+  height: 130px; /* Optional: Set the maximum width of images */
   height: auto; /* Maintain aspect ratio */
   background-color: transparent;
   border-radius: 25px;

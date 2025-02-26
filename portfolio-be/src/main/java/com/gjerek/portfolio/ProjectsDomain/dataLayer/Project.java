@@ -25,6 +25,11 @@ public class Project {
     private String description;
     private String startDate;
     private String endDate;
+    @Column(length = 6000) // Adjust length as needed
+    private String imageUrl;
+    private String githubClone;
+    @Enumerated(EnumType.STRING)
+    private Category category;
     private String githubLink;
 
 }
