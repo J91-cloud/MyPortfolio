@@ -62,6 +62,7 @@ const Login: React.FC = () => {
       // Assume `authService.login()` stores accessToken in localStorage
       setIsAuthenticated(true);
       await fetchUserInfo();
+      window.location.reload()
     } catch (error) {
       if (axios.isAxiosError(error)) {
         console.error("Axios Error:", error.response);
@@ -77,6 +78,7 @@ const Login: React.FC = () => {
       localStorage.removeItem("accessToken"); // Remove access token
       setIsAuthenticated(false);
       setUserInfo(null);
+      // window.location.reload()
     } catch (error) {
       console.error("Logout failed", error);
     }

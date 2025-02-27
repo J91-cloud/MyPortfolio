@@ -126,13 +126,12 @@ const DisplayProjects: React.FC = () => {
                 <p>{project.description}</p>
                 <p>Start Date: {project.startDate}</p>
                 <p>End Date: {project.endDate}</p>
-                <p>{project.githubLink}</p>
                 <a
                   href={project.githubLink}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  GitHub Link
+                  GitHub Link / Webpage Link
                 </a>
                 {accessToken && (
                   <>
