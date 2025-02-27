@@ -8,6 +8,7 @@ import "../../styles/global.css";
 import commentRequestDTO from "../../Models/commentRequestDTO";
 import axiosInstance from "../../assets/axiosInstance";
 import profileRequestDTO from "../../Models/profileRequestDTO";
+import DeleteEducation from "../../Components/education/DeleteEducation";
 import "./About.css";
 
 const About = () => {
@@ -36,6 +37,7 @@ const About = () => {
       .then((response) => {
         const educationData: educationRequestDTO[] = response.data.map(
           (education: any) => ({
+            educationId: education.educationIdentifier.educationId,
             description: education.description,
             schoolName: education.schoolName,
             location: education.location,
@@ -158,9 +160,15 @@ const About = () => {
         <section className="education-section">
           <h2>{educationInfo.schoolName}</h2>
           <p>{educationInfo.year}</p>
-          <p>{educationInfo.location}</p>
+          <p>{educationInfo.location}</p>3
           <hr />
           <p>{educationInfo.description}</p>
+          {accessToken && (
+                  <>
+                  
+                    <DeleteEducation educationId={educationInfo.educationId} />
+                  </>
+                )}
         </section>
       </div>
     </div>

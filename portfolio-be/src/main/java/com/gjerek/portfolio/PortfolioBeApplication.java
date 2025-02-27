@@ -58,8 +58,8 @@ public class PortfolioBeApplication {
 	@Bean
 	public CommandLineRunner runProjectLoader(ProjectsLoader dataLoaderService, ProjectRepository projectRepository) {
 		return args -> {
-			if (projectRepository.count() > 0) {
-				projectRepository.deleteAll();
+			if (projectRepository.count() == 0) {
+//				projectRepository.deleteAll();
 				dataLoaderService.loadData();
 			}
 //			else if (projectRepository.count() > 0) {

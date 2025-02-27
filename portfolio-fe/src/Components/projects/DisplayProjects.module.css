@@ -1,18 +1,27 @@
+.container {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
 .stack_container {
-  width: 200px;
-  overflow: hidden;
+  width: 200%;
   height: 50vh;
+  min-height: 400px;
   overflow: hidden;
-  display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .card {
   position: absolute;
-  transform: translate(-50%, -50%);
   width: 300px;
-  margin-left: 246px;
   height: 400px;
   background-color: rgb(48, 45, 60);
   border-radius: 10px;
@@ -38,7 +47,7 @@
 .card p {
   margin: 10px 0;
   font-size: 16px;
-  color: black;
+  color: white;
 }
 
 .card a {
@@ -55,10 +64,92 @@
   z-index: 10; /* Ensure the active card is on top */
 }
 
-.images {
-  height: 174px;
-  width: 183px;
+.image_section {
+  margin: -80px;
+  display: flex;
   align-items: center;
-  margin: 20px;
+  justify-content: center;
+}
 
+.flex_container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.images {
+  height: 284px;
+  width: 343px;
+  object-fit: contain;
+  margin: 20px 0;
+}
+
+.terminal {
+  width: 100%;
+}
+
+/* Make the layout stack on smaller screens */
+@media (max-width: 768px) {
+  .grid {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr;
+  }
+  .card{
+    align-items: center;
+  }
+  
+  .stack_container {
+    margin: 0 auto;
+  }
+  
+  .image_section {
+    margin-top: 80px;
+    margin-bottom: 40px;
+     
+  }
+  
+  .flex_container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .images {
+    margin: 10px auto;
+    width: 300px;
+    height: 225px;
+  }
+  
+  .terminal {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+/* For very small screens */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  
+  .card {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+    min-height: 350px;
+    padding: 15px;
+  }
+  
+  .card h2 {
+    font-size: 20px;
+  }
+  
+  .card p {
+    font-size: 14px;
+  }
+  
+  .images {
+    height: 150px;
+    width: 150px;
+  }
 }
