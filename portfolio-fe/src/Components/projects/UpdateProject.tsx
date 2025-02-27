@@ -64,6 +64,7 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
       console.log("Project updated:", response.data);
       setProject(response.data);
       setIsPopupOpen(false);
+      window.location.reload();
     } catch (error) {
       console.error("Error updating project:", error);
       setError("Failed to update project.");

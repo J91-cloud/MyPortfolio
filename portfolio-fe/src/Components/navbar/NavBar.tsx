@@ -4,6 +4,7 @@ import styles from "./Navbar.module.css";
 import GoogleTranslateLoader from "../Translation/googleTranslation";
 import { protectWords } from "../Translation/utils";
 import Login from "../../pages/auth/Login";
+import "../../styles/global.css"
 
 const Navbar = () => {
   const location = useLocation();
@@ -102,11 +103,11 @@ const Navbar = () => {
 <GoogleTranslateLoader />
 
 <select
-  className="comments-dropdown bg-transparent text-black"
+  className="text-white "
   onChange={(e) => handleTranslate(e.target.value)}
 >
-  <option value="en">English</option>
-  <option value="fr">French</option>
+  <option className="text-black bg-powder" value="en">English</option>
+  <option value="fr" className="text-black">French</option>
 </select>
         </div>
       </nav>
