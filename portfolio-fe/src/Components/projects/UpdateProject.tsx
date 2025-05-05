@@ -8,6 +8,8 @@ import {
   DialogActions,
   TextField,
   Button,
+  MenuItem,
+  Select,
 } from "@mui/material";
 
 interface UpdateProjectProps {
@@ -29,6 +31,8 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
     githubClone: "",
     category: "",
   });
+
+  const category = ["WEB_DEVELOPMENT", "SCRIPT", "IT"];
 
   useEffect(() => {
     axiosInstance
@@ -154,14 +158,19 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
               fullWidth
               margin="normal"
             />
-            <TextField
+            <Select
               name="category"
               label="Category"
               value={formData.category}
-              onChange={handleInputChange}
+              /* onChange={handleInputChange} */
               fullWidth
-              margin="normal"
-            />
+            >
+              {category.map((cat) => (
+                <MenuItem key={cat} value={cat}>
+                  {cat}
+                </MenuItem>
+              ))}
+            </Select>
             <DialogActions>
               <Button onClick={() => setIsPopupOpen(false)}>Cancel</Button>
               <Button type="submit" color="primary">

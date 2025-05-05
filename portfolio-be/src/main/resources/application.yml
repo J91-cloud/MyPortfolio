@@ -1,6 +1,6 @@
 frontend-deployment:
- url: https://sea-turtle-app-xqswa.ondigitalocean.app
-#   url: http://localhost:3000
+  # url: https://sea-turtle-app-xqswa.ondigitalocean.app
+url: http://localhost:3000
 
 spring:
   jpa:
@@ -22,7 +22,6 @@ management:
   endpoint:
     mappings:
       enabled: true
-
 #frontend-deployment:
 #  url: http://localhost:3000
 #
@@ -46,3 +45,4 @@ management:
 #  endpoint:
 #    mappings:
 #      enabled: true
+

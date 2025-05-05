@@ -3,9 +3,10 @@ import "../styles/global.css";
 
 type FormField = {
   name: string;
-  type: "text" | "number" | "email" | "password" | "textarea";
+  type: "text" | "number" | "email" | "password" | "textarea" | "select";
   label: string;
   required?: boolean;
+  enum?: string[];
 };
 
 type FormConfig = {
@@ -57,10 +58,21 @@ const formConfigs: Record<string, FormConfig> = {
       { name: "name", type: "text", label: "Project Name", required: true },
       { name: "startDate", type: "text", label: "Start Date", required: true },
       { name: "endDate", type: "text", label: "End Date", required: true },
-      { name: "githubClone", type: "text", label: "githubClone", required: true },
+      {
+        name: "githubClone",
+        type: "text",
+        label: "githubClone",
+        required: true,
+      },
       { name: "imageURL", type: "text", label: "imageURL", required: true },
-      { name: "category", type: "text", label: "Category", required: true },
-      
+      {
+        name: "category",
+        type: "select",
+        label: "Category",
+        required: true,
+        enum: ["WEB_DEVELOPMENT", "IT", "SCRIPT"],
+      },
+
       {
         name: "githubLink",
         type: "text",
@@ -95,9 +107,7 @@ const DynamicForm = <T extends Record<string, any>>({
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const formConfig = formConfigs[formType];
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  const handleChange = (e: React.ChangeEvent<any>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -106,9 +116,7 @@ const DynamicForm = <T extends Record<string, any>>({
     e.preventDefault();
     await onSubmit(formData as T);
     setSuccessMessage(formConfig.successMessage);
-    
 
-    
     setTimeout(() => {
       setSuccessMessage(null);
     }, 1500);
@@ -116,7 +124,6 @@ const DynamicForm = <T extends Record<string, any>>({
     setTimeout(() => {
       window.location.reload();
     }, 2000);
-     
   };
 
   return (
@@ -135,13 +142,19 @@ const DynamicForm = <T extends Record<string, any>>({
                 {formConfig.fields.map((field) => (
                   <div key={field.name} className="form-field">
                     <label>{field.label}</label>
-                    {field.type === "textarea" ? (
-                      <textarea
+                    {field.type === "select" ? (
+                      <select
                         name={field.name}
                         value={formData[field.name] || ""}
                         onChange={handleChange}
                         required={field.required}
-                      />
+                      >
+                        {field.enum?.map((item) => (
+                          <option key={item} value={item}>
+                            {item}
+                          </option>
+                        ))}
+                      </select>
                     ) : (
                       <input
                         type={field.type}
