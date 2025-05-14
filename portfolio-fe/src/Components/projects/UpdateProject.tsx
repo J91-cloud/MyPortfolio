@@ -8,6 +8,10 @@ import {
   DialogActions,
   TextField,
   Button,
+  MenuItem,
+  Select,
+  FormControl,
+  InputLabel,
 } from "@mui/material";
 
 interface UpdateProjectProps {
@@ -30,6 +34,13 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
     category: "",
   });
 
+  // Define your category options
+  const categoryOptions = [
+    { value: "WEB_DEVELOPMENT", label: "WEB_DEVELOPMENT" },
+    { value: "IT", label: "IT" },
+    { value: "SCRIPTING", label: "SCRIPTING" },
+  ];
+
   useEffect(() => {
     axiosInstance
       .get(`/projects/${projectId}`)
@@ -47,6 +58,14 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
   }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSelectChange = (e: any) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -154,14 +173,21 @@ const UpdateProject: React.FC<UpdateProjectProps> = ({ projectId }) => {
               fullWidth
               margin="normal"
             />
-            <TextField
-              name="category"
-              label="Category"
-              value={formData.category}
-              onChange={handleInputChange}
-              fullWidth
-              margin="normal"
-            />
+            <FormControl fullWidth margin="normal">
+              <InputLabel>Category</InputLabel>
+              <Select
+                name="category"
+                value={formData.category}
+                label="Category"
+                onChange={handleSelectChange}
+              >
+                {categoryOptions.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                    {option.label}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
             <DialogActions>
               <Button onClick={() => setIsPopupOpen(false)}>Cancel</Button>
               <Button type="submit" color="primary">

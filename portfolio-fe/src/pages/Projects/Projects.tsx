@@ -48,17 +48,10 @@ const Projects = () => {
       )}
 
 
-      <h1 className="font-extrabold2 mt-10">Web Developement</h1>
 
       <DisplayProjects />
 
-      <hr />
-
-      <h1 className="font-extrabold2 mt-10">Scripting</h1>
-
-      <hr />
-
-      <h1>Thanks for finishing </h1>
+  
     </div>
   );
 };
