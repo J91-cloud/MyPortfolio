@@ -3,9 +3,10 @@ import "../styles/global.css";
 
 type FormField = {
   name: string;
-  type: "text" | "number" | "email" | "password" | "textarea";
+  type: "text" | "number" | "email" | "password" | "textarea" | "select";
   label: string;
   required?: boolean;
+  options?: { value: string; label: string }[]; // Add options for select type
 };
 
 type FormConfig = {
@@ -59,8 +60,17 @@ const formConfigs: Record<string, FormConfig> = {
       { name: "endDate", type: "text", label: "End Date", required: true },
       { name: "githubClone", type: "text", label: "githubClone", required: true },
       { name: "imageURL", type: "text", label: "imageURL", required: true },
-      { name: "category", type: "text", label: "Category", required: true },
-      
+      { 
+        name: "category", 
+        type: "select", 
+        label: "Category", 
+        required: true,
+        options: [
+          { value: "WEB_DEVELOPMENT", label: "WEB_DEVELOPMENT" },
+          { value: "IT", label: "IT" },
+          { value: "SCRIPTING", label: "SCRIPTING" },
+        ]
+      },
       {
         name: "githubLink",
         type: "text",
@@ -96,7 +106,7 @@ const DynamicForm = <T extends Record<string, any>>({
   const formConfig = formConfigs[formType];
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -107,8 +117,6 @@ const DynamicForm = <T extends Record<string, any>>({
     await onSubmit(formData as T);
     setSuccessMessage(formConfig.successMessage);
     
-
-    
     setTimeout(() => {
       setSuccessMessage(null);
     }, 1500);
@@ -116,7 +124,6 @@ const DynamicForm = <T extends Record<string, any>>({
     setTimeout(() => {
       window.location.reload();
     }, 2000);
-     
   };
 
   return (
@@ -142,6 +149,20 @@ const DynamicForm = <T extends Record<string, any>>({
                         onChange={handleChange}
                         required={field.required}
                       />
+                    ) : field.type === "select" ? (
+                      <select
+                        name={field.name}
+                        value={formData[field.name] || ""}
+                        onChange={handleChange}
+                        required={field.required}
+                      >
+                        <option value="">Select an option</option>
+                        {field.options?.map((option) => (
+                          <option key={option.value} value={option.value}>
+                            {option.label}
+                          </option>
+                        ))}
+                      </select>
                     ) : (
                       <input
                         type={field.type}
